@@ -1,0 +1,57 @@
+baseURL = 'http://magsther.github.io/'
+languageCode = 'en-us'
+title = "IDIRENE DARIS"
+theme = 'Dawi'
+
+
+[taxonomies]
+tag = 'tags'
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    pre = "<span data-feather='home'></span>"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Posts"
+    pre = "<span data-feather='book'></span>"
+    url = "/posts/"
+    weight = 2
+
+  # [[menu.main]]
+  #   name = "Projects"
+  #   pre = "<span data-feather='code'></span>"
+  #   url = "/projects/"
+  #   weight = 3
+
+  [[menu.main]]
+    name = "Tags"
+    pre = "<span data-feather='tag'></span>"
+    url = "/tags/"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "github"
+    pre = "<span data-feather='github'></span>"
+    url = "https://github.com/MadebyDaris"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "Linkedin"
+    pre = "<span data-feather='Linkedin'></span>"
+    url = "https://www.linkedin.com/in/daris-idirene-661a66341/"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "twitter"
+    pre = "<span data-feather='twitter'></span>"
+    url = "https://x.com/ByDaris"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "rss"
+    pre = "<span data-feather='rss'></span>"
+    url = "/index.xml"
+    weight = 7
