@@ -1,11 +1,12 @@
 ---
 title: "Using an ESP32 chip"
-date: 2020-10-01
+date: 2023-09-20
 description: "A bunch of notes."
 tags: ["Electronics"]
 type: post
 weight: 35
 showTableOfContents: true
+katex: true
 ---
 
 In this post, you can find the notes I took while working in KiCad, here I worked mainly on using the ESP32 chip and creating a basic board, as well as a camera and the ESP32.
@@ -146,18 +147,15 @@ The circuit you provided is a typical application circuit for a step-down (buck)
 - **R4, R5 (Feedback Resistors):**
     - These resistors set the output voltage of the regulator. The formula for setting the output voltage is:
         
-        Vout=VFB×(1+R4R5)V_{out} = V_{FB} \times \left(1 + \frac{R4}{R5}\right)Vout​=VFB​×(1+R5R4​)
+        $$ V_{out} = V_{FB} \times \left(1 + \frac{R4}{R5}\right)$$
         
-        Where VFBV_{FB}VFB​ is typically 0.6V for the AP63200.
+        Where $$V_{FB} = 0.6V$$​ for the AP63200.
         
         To set the output to 3.3V:
         
-        3.3V=0.6V×(1+R4R5)3.3V = 0.6V \times \left(1 + \frac{R4}{R5}\right)3.3V=0.6V×(1+R5R4​)
+        $$ 3.3V = 0.6V \times \left(1 + \frac{R4}{R5}\right)$$
         
         Solving this gives:
-        
-        R4R5=3.3V0.6V−1=4.5\frac{R4}{R5} = \frac{3.3V}{0.6V} - 1 = 4.5R5R4​=0.6V3.3V​−1=4.5
-        
         So, you can choose R5 as 10 kΩ and R4 as 45 kΩ. However, it's common to use standard resistor values, so you might choose R4 as 47 kΩ and R5 as 10 kΩ, which gives a slightly higher output voltage of around 3.32V.
         
 

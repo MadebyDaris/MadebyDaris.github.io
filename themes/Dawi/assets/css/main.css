@@ -423,10 +423,20 @@ table td {
   padding-top: 0.25em;
   margin-bottom: 1.25em;
   border-spacing: 2px;
-  border-radius: 20px 10px 20px 20px;
+  border-radius: 20px 20px 20px 20px;
   border: 6px solid white;
-  font-size: 6em;
   font-family: Josefin;
+}
+@media (min-width: 800px) {
+  .home-about h1 {
+    font-size: 8em;
+  }
+}
+@media (max-width: 400px) {
+  .home-about h1 {
+    font-size: 4vh;
+    
+  }
 }
 
 .home-about h2 {

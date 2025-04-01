@@ -5,6 +5,7 @@ description: "A bunch of notes."
 tags: ["Electronics"]
 type: post
 weight: 25
+katex: true
 showTableOfContents: true
 ---
 
@@ -76,7 +77,8 @@ used for generating precise timing and waveform functions in electronic circuits
 ![[Pasted image 20240823165313.png]]
 
 GND and VCC pins power the comparators
-	Input of compartor 1 getting $\frac23Vcc$ and comparator 2 getting $\frac13Vcc$ 
+	Input of compartor 1 getting 
+	$\frac23Vcc$ and comparator 2 getting $\frac13Vcc$ 
 	Supply vol tage 4.5-15 Volts
 
 A **reference designator** unambiguously identifies the location of a [component](https://en.wikipedia.org/wiki/Electronic_component "Electronic component") within an [electrical schematic](https://en.wikipedia.org/wiki/Circuit_diagram "Circuit diagram") or on a [printed circuit board](https://en.wikipedia.org/wiki/Printed_circuit_board "Printed circuit board"). The reference designator usually consists of one or two letters followed by a number, e.g. C3, D1, R4, U15. The number is sometimes followed by a letter, indicating that components are grouped or matched with each other

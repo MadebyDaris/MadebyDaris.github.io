@@ -19,7 +19,7 @@ function setup() {
 
 }
 function draw() {
-  resizeCanvas(Document.width, Document.height);
+  // resizeCanvas(Document.width, Document.height);
   background(20);  // Clear the frame each loop to prevent trails
   noStroke();
   let scrollY = window.scrollY * 0.2; // Slow parallax effect
