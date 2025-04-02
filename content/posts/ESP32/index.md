@@ -57,7 +57,7 @@ Two different camera sensors CCD and CMOS sensors.
 OV7725 Specific pins used in this example to connect ESP32 and camera
 - Power Supply 3.3V
 - **Camera pin** column refers to pinout on OV7725 camera module
-- for STM32 but it's a good reference
+- for STM32 but it's a good referenc
 	- https://www.youtube.com/watch?v=oVzuphK4haQ
 Pin Mapping
 ![](PinMatching.png)
@@ -72,14 +72,14 @@ Pin Mapping
 - Image Sensor 
 #### BUIILDING THE SYMBOL FOR THE OV7725
 
-![[OV7725PackageSpecificatio,.png]]
-![[Pinout.png]]
+![](OV7725PackageSpecification.png)	
+![](Pinout.png)
 	The OV7725 is an integrated cuicuit Camera chip.
 Here is the pinout firgure found on the data sheet, this will help us create the symbol for the OV7725, and the pins in particular.
 
 ## SCHEMATIC
 We move on to the schematic, here is one from we will use as a base provided by espressif
-![[ESP32-C3 Circuit.png]]
+![](ESP32-C3Circuit.png)
 Sources
 - Example circuit, https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/Seeeduino-XIAO-ESP32C3-SCH.pdf
 - ESP32C3 Design guidelines , https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c3/index.html

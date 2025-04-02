@@ -1,6 +1,6 @@
 ---
 title: "Electrical Engineering"
-date: 2020-10-01T17:55:28+08:00
+date: 2023-09-01
 description: "A bunch of notes."
 tags: ["Electronics"]
 type: post

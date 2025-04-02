@@ -252,8 +252,9 @@ a:hover .feather-sun {
   bottom: 0;
   color: inherit;
   left: 0;
+  margin-top: 10px;
   margin-left: 30%;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 40px 0;
   position: absolute;
   text-align: center;
@@ -642,8 +643,11 @@ table td {
   }
 
   .footer {
+    padding-top: 20px;
+    margin-top: 20px;
     margin-left: 0;
     width: 100%;
+    align-items: right;
   }
 }
 
