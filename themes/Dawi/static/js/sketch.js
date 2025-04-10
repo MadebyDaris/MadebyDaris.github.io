@@ -7,7 +7,15 @@ function setup() {
   cnv.style('position', 'fixed'); // Prevent scrolling
 
   angleMode(DEGREES);
-  background(20);
+  background(15);
+
+  if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.dark) {
+    background(5)
+
+  } else if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.light) {
+    background(120)
+    print("WHITE")
+  }
 
   for (let i = 0; i < 100; i++) {
     let x = random(width);
@@ -20,15 +28,32 @@ function setup() {
 }
 function draw() {
   // resizeCanvas(Document.width, Document.height);
-  background(20);  // Clear the frame each loop to prevent trails
   noStroke();
   let scrollY = window.scrollY * 0.2; // Slow parallax effect
+
+  // darkThemeCss = document.getElementById("dark-theme");
+  // const savedTheme = localStorage.getItem(THEME_PREF_STORAGE_KEY) ||
+  //     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  // setTheme(savedTheme, darkThemeToggles);
+  // const darkThemeToggles = document.querySelectorAll('.dark-theme-toggle');
+  // darkThemeToggles.forEach(el => el.addEventListener('click', change_background, { capture: true }))
 
   for (let star of stars) {
     console.log(star.x)
     console.log(star.y)
     star.update();  // Move stars
     star.show();    // Draw stars
+  }
+}
+
+function change_background(event) {
+  toggleIcon = event.currentTarget.querySelector("a svg.feather");
+  if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.dark) {
+    background(15)
+
+  } else if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.light) {
+    background(120)
+    print("WHITE")
   }
 }
 
