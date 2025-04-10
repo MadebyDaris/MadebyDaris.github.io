@@ -11,14 +11,6 @@ function setup() {
 
   theme = getCurrentTheme();
 
-  if (theme === "dark") {
-    background(5)
-
-  } else if (theme === "light") {
-    background(120)
-    print("WHITE")
-  }
-
   for (let i = 0; i < 100; i++) {
     let x = random(width);
     let xSpeed = random(-2, 2);  // Small movement to avoid them going too fast
@@ -29,12 +21,12 @@ function setup() {
 
 }
 function draw() {
-  // resizeCanvas(Document.width, Document.height);
+  change_background();
+
+  resizeCanvas(Document.width, Document.height);
   noStroke();
   let scrollY = window.scrollY * 0.2; // Slow parallax effect
   for (let star of stars) {
-    console.log(star.x)
-    console.log(star.y)
     star.update();  // Move stars
     star.show();    // Draw stars
   }
@@ -46,7 +38,6 @@ function getCurrentTheme() {
 }
 
 function change_background() {
-  clear(); // Clears the canvas 
   theme = getCurrentTheme()
   if (theme === THEME_TO_ICON_CLASS.dark) {
     background(15)
@@ -86,17 +77,19 @@ class Star {
     if (this.y > height) this.y = 0;
     if (this.y < 0) this.y = height;
 
-    change_background()
 
+    // clear(); // Clears the canvas 
+    // change_background()
   }
   show() {
     theme = getCurrentTheme();
 
+    let alpha = random(150, 255); // Twinkling effect
+
     if (theme === "dark") {
-      fill(10);
-  
+      fill(255, 255, 255, alpha);
     } else if (theme === "light") {
-      fill(100)
+      fill(255, 255, 255, alpha);
     }
     ellipse(this.x, this.y, 5, 5);
     change_background()
