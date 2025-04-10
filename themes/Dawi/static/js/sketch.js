@@ -9,10 +9,12 @@ function setup() {
   angleMode(DEGREES);
   background(15);
 
-  if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.dark) {
+  theme = getCurrentTheme();
+
+  if (theme === "dark") {
     background(5)
 
-  } else if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.light) {
+  } else if (theme === "light") {
     background(120)
     print("WHITE")
   }
@@ -30,14 +32,6 @@ function draw() {
   // resizeCanvas(Document.width, Document.height);
   noStroke();
   let scrollY = window.scrollY * 0.2; // Slow parallax effect
-
-  // darkThemeCss = document.getElementById("dark-theme");
-  // const savedTheme = localStorage.getItem(THEME_PREF_STORAGE_KEY) ||
-  //     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  // setTheme(savedTheme, darkThemeToggles);
-  // const darkThemeToggles = document.querySelectorAll('.dark-theme-toggle');
-  // darkThemeToggles.forEach(el => el.addEventListener('click', change_background, { capture: true }))
-
   for (let star of stars) {
     console.log(star.x)
     console.log(star.y)
@@ -46,12 +40,18 @@ function draw() {
   }
 }
 
-function change_background(event) {
-  toggleIcon = event.currentTarget.querySelector("a svg.feather");
-  if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.dark) {
+function getCurrentTheme() {
+  return localStorage.getItem(THEME_PREF_STORAGE_KEY) ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+
+function change_background() {
+  clear(); // Clears the canvas 
+  theme = getCurrentTheme()
+  if (theme === THEME_TO_ICON_CLASS.dark) {
     background(15)
 
-  } else if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.light) {
+  } else if (theme === THEME_TO_ICON_CLASS.light) {
     background(120)
     print("WHITE")
   }
@@ -85,9 +85,20 @@ class Star {
     if (this.x < 0) this.x = width;
     if (this.y > height) this.y = 0;
     if (this.y < 0) this.y = height;
+
+    change_background()
+
   }
   show() {
-    fill(40);
+    theme = getCurrentTheme();
+
+    if (theme === "dark") {
+      fill(10);
+  
+    } else if (theme === "light") {
+      fill(100)
+    }
     ellipse(this.x, this.y, 5, 5);
+    change_background()
   }
 }
