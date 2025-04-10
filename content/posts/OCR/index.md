@@ -2,7 +2,7 @@
 title: "How do Convolution Neural Networks Work?"
 date: 2024-09-30
 description: "A bunch of notes."
-tags: ["Electronics"]
+tags: ["AI/Machine learning"]
 type: post
 weight: 25
 katex: true
@@ -105,3 +105,5 @@ func(x) = 2x + 9
 x_train, x_test = hcat(0:5...), hcat(6:10...)
 y_train, y_test = func.(x_train), func.(x_test)
 ```
+
+--- Still a work in progress
