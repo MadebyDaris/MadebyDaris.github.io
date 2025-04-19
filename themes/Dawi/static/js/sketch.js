@@ -21,7 +21,6 @@ function setup() {
 
 }
 function draw() {
-  change_background();
 
   resizeCanvas(Document.width, Document.height);
   noStroke();
@@ -83,15 +82,16 @@ class Star {
   }
   show() {
     theme = getCurrentTheme();
+    change_background()
 
     let alpha = random(150, 255); // Twinkling effect
 
-    if (theme === "dark") {
+    
+    if (theme == "dark") {
       fill(255, 255, 255, alpha);
-    } else if (theme === "light") {
-      fill(255, 255, 255, alpha);
+    } else if (theme == "light") {
+      fill(255, 0, 255, alpha);
     }
     ellipse(this.x, this.y, 5, 5);
-    change_background()
   }
 }
