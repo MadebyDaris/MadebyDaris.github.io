@@ -8,9 +8,12 @@ weight: 25
 katex: true
 showTableOfContents: true
 ---
+
 # Building Inertia: A Journey into Real-Time Physics Simulation
 
 Ever wondered what it would be like to hold the universe in your hands? To tweak the laws of physics and watch planets dance around stars in real-time? That's exactly what drove me to create **Inertia**  – a Rust-based physics engine.
+
+![Here you can watch a rudimentary example](https://www.youtube.com/watch?v=OP_sJ9b2lhw&ab_channel=DarisIdirene)
 
 ## The Spark of an Idea
 
