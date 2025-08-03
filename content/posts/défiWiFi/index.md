@@ -1,10 +1,11 @@
 # Défi WiFi Hackathon
+In this article I will give a description of the plan behind the 2025 April hackathon with ANFR, and what we learned during the event as well as what I learned after taking a deeper look in how to deal with this project.
 The project developed during a hackathon aimed at locating WiFi access points in real time using:
 - Network sniffing,
 - Distance estimation based on signal strength,
 - Map visualization in a Flutter application, and finding the exact points
 ## 1. Working on the dataset
-The original Dataset we were given was of the following format, we used the MAC address as a unique identifier of the network.
+The original Dataset we were given was of the following format, we used the MAC address as a unique identifier of the network, and the signal strength to determine the distance of the device from the source. Yet, we encountered numerous issues with the dataset.
 **Issues:**
 - Frequently in the dataset, the same mac address at the same longitude and latitude, emits two signals, with different percentages, resulting in different distances, sometimes resulting in a difference of 10-100m
 ```json
@@ -102,3 +103,27 @@ fn main() {
     println!("cargo:rustc-link-lib=ws2_32"); // Windows sockets
 }
 ```
+
+5. Trilateration Algorithm Issues
+Circle Intersection Problems
+Mathematical Challenge: Finding WiFi access point location using multiple distance estimates.
+Issues Encountered:
+
+- No Clear Intersection - Circles don't meet at a single point
+- Noise in Dataset - Inconsistent measurements create impossible geometries
+- Margin Requirements - Need to add significant error margins for any intersection
+- Outlier Handling - Some distance estimates are clearly erroneous and need filtering
+Current Approach:
+- Remove obvious outliers from circle calculations
+- Add distance margins to account for measurement errors
+- Accept approximate intersections rather than precise points
+- Filter noise from dataset before processing
+
+6. User Experience Limitations
+- Real-Time Performance Issues
+- Network scanning is resource-intensive
+- Battery drain on mobile devices
+- Processing delays for trilateration calculations
+- Map updates may lag behind data collection
+- Rooting devices is necessary for this to work
+--- Still a work in progress
