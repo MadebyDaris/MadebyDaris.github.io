@@ -12,7 +12,6 @@ showTableOfContents: true
 
 # Convolution Neural Network implementation
 ![](conv.png)
-
 This comprehensive guide explores Convolutional Neural Networks (CNNs) from mathematical foundations to practical implementation. We'll use the MNIST dataset as our primary example, but the principles extend to creating synthetic datasets with OCR fonts and beyond.
 
 ## I | Mathematical Foundations

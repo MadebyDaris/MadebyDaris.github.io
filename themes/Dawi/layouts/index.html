@@ -6,10 +6,14 @@
     {{ end }}
 	</div>
 
-    <h1>{{ .Site.Title }}</h1>
+    <h1 class="site-title">{{ .Site.Title }}</h1>
     {{ if isset .Site.Params "description" }}
         <h2>{{ .Site.Params.Description }}</h2>
     {{ end }}
+    <div class="home-cta-buttons">
+        <a href="/posts/" class="cta-button primary">View All Posts</a>
+        <a href="/about/" class="cta-button secondary">About Me</a>
+    </div>
 
 </section>
 
@@ -55,5 +59,59 @@
     {{ end }}
     </div>
 
+
 {{ end }}
+
+<!-- Featured/Latest Posts Section -->
+{{ $posts := where .Site.Pages "Params.type" "post" }}
+{{ if gt (len $posts) 0 }}
+<section class="home-posts-featured">
+    <h2 class="section-title">Latest Posts</h2>
+    <div class="featured-posts-grid">
+        {{ range ($posts.ByDate.Reverse | first 3) }}
+        <article class="featured-post">
+            {{ if .Params.image }}
+            <div class="featured-post-image">
+                <a href="{{ .Permalink }}">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                </a>
+            </div>
+            {{ end }}
+            <div class="featured-post-content">
+                <h3><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
+                <p class="featured-post-excerpt">{{ .Summary | truncate 120 }}</p>
+                <div class="featured-post-meta">
+                    <time class="post-date">{{ dateFormat "January 2, 2006" .Date }}</time>
+                    {{ if .Params.tags }}
+                    <div class="post-tags-inline">
+                        {{ range first 2 .Params.tags }}
+                        <span class="tag-inline">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+                <a href="{{ .Permalink }}" class="read-more">Read More →</a>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+<!-- Skills/Expertise Section (Professional Touch) -->
+{{ if isset .Site.Params "skills" }}
+<section class="home-skills">
+    <h2 class="section-title">Skills & Expertise</h2>
+    <div class="skills-grid">
+        {{ range .Site.Params.Skills }}
+        <div class="skill-item">
+            <div class="skill-icon">{{ .icon | safeHTML }}</div>
+            <h3>{{ .name }}</h3>
+            <p>{{ .description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
 {{ end }}

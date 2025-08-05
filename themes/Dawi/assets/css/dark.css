@@ -1,6 +1,6 @@
 :root {
-  --dark-primary-color: 34, 39, 46;
-  --dark-secondary-color: #2d333b;
+  --dark-primary-color: 10, 15, 16;
+  --dark-secondary-color: #030404;
   --dark-tertiary-color: #646464;
   --dark-text-color: white;
 }
@@ -99,3 +99,66 @@ video {
   -webkit-filter: hue-rotate(180deg) contrast(100%) invert(100%);
 }
 */
+/* Dark Mode Overrides for some new components */
+
+/* Featured Posts Dark Mode */
+.featured-post {
+    background-color: var(--dark-secondary-color) !important;
+    border: 1px solid #374151 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.featured-post:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.featured-post-content h3 a {
+    color: #f9fafb !important;
+}
+
+.featured-post-content h3 a:hover {
+    color: var(--accent-color) !important;
+}
+
+.featured-post-excerpt {
+    color: #d1d5db !important;
+}
+
+.featured-post-meta {
+    color: #d1d5db !important;
+}
+
+/* Skills Section Dark Mode */
+.skill-item {
+    background: var(--dark-secondary-color) !important;
+    border: 1px solid #374151 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.skill-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.skill-item h3 {
+    color: #f9fafb !important;
+}
+
+.skill-item p {
+    color: #d1d5db !important;
+}
+
+/* Section Titles Dark Mode */
+.section-title {
+    color: #f9fafb !important;
+}
+
+/* CTA Buttons Dark Mode */
+.cta-button.secondary {
+    color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.cta-button.secondary:hover {
+    background: var(--accent-color) !important;
+    color: white !important;
+}

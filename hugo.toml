@@ -1,4 +1,4 @@
-baseURL = 'http://magsther.github.io/'
+baseURL = 'http://MadebyDaris.github.io/'
 languageCode = 'en-us'
 title = "IDIRENE DARIS"
 theme = 'Dawi'
@@ -55,3 +55,34 @@ tag = 'tags'
     pre = "<span data-feather='rss'></span>"
     url = "/index.xml"
     weight = 7
+
+  [[menu.main]]
+    identifier = "patreon"
+    pre = "<span data-feather='coffee'></span>"
+    url = "https://www.patreon.com/c/DarisIdirene"
+    weight = 6
+
+  [[menu.main]]
+    identifier = "instagram"
+    pre = "<span data-feather='instagram'></span>"
+    url = "https://www.instagram.com/daris.idr/"
+    weight = 6
+
+[params]
+  # ... your existing params
+  
+  [[params.skills]]
+    name = "Engineering Solutions"
+    description = "Creating modern, applications/software solutions for various industries with a wide variety of technologies and frameworks"
+  
+  [[params.skills]]
+    name = "Content Writing"
+    description = "Crafting engaging and informative blog posts and articles"
+  
+  [[params.skills]]
+    name = "Problem Solving"
+    description = "Analyzing complex problems and developing effective solutions"
+  
+  [[params.skills]]
+    name = "Artistic Design"
+    description = "Designing visually appealing graphics and layouts for digital and print media"

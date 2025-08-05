@@ -4,8 +4,8 @@
 
   --light-primary-color: 255, 255, 255;
   --light-secondary-color: #dddddd;
-  --light-tertiary-color: #272822;
-  --light-text-color: black;
+  --light-tertiary-color: #94944b;
+  --light-text-color: rgb(5, 5, 5);
 }
 
 @font-face {
@@ -309,6 +309,8 @@ a:hover .feather-sun {
   text-decoration: none;
 }
 
+
+
 /* CODE BLOCKS */
 code,
 pre {
@@ -423,22 +425,22 @@ table td {
 
 .home-about h1 {
   margin-top: 1.75em;
-  padding-top: 0.25em;
   margin-bottom: 1.25em;
+  margin-left: 0;
+  padding-top: 0em;
   border-spacing: 2px;
   border-radius: 20px 20px 20px 20px;
   border: 6px solid white;
-  font-family: Josefin;
+  font-family: "Google Sans Code", monospace;
 }
 @media (min-width: 800px) {
   .home-about h1 {
-    font-size: 8em;
+    font-size: 20vh;
   }
 }
 @media (max-width: 400px) {
   .home-about h1 {
-    font-size: 4vh;
-    
+    font-size: 8vh;
   }
 }
 

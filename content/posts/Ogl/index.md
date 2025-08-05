@@ -13,8 +13,8 @@ showTableOfContents: true
 
 Ever wondered what it would be like to hold the universe in your hands? To tweak the laws of physics and watch planets dance around stars in real-time? That's exactly what drove me to create **Inertia**  – a Rust-based physics engine.
 
-![Here you can watch a rudimentary example](https://www.youtube.com/watch?v=OP_sJ9b2lhw&ab_channel=DarisIdirene)
-
+[Here you can watch a rudimentary example](https://www.youtube.com/watch?v=OP_sJ9b2lhw&ab_channel=DarisIdirene)
+{{< youtube OP_sJ9b2lhw >}}
 ## The Spark of an Idea
 
 Fascinated by the elegance of Newton's laws governing celestial motions. I thought: What if students could experiment with gravity itself, watching cause and effect unfold in real-time?
