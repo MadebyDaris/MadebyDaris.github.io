@@ -1,5 +1,5 @@
 ---
-title: "Inertia devlog :#1 Enhanced UI"
+title: "Inertia devlog n°1 Enhanced UI"
 date: 2025-08-11
 description: "Devlog n1 for Inertia the physics Engine."
 tags: ["Software Engineering", "Physics", "Astronomy"]

@@ -1,5 +1,5 @@
 ---
-title: "Dogonomics devlog :#1 Enhanced UI"
+title: "Dogonomics devlog n°1 Enhanced UI"
 date: 2025-08-07
 description: "A recounting of Dogonomics my financial assistant that I'm developing, currently in the making."
 tags: ["AI/Machine learning", "Finance", "App Development"]
