@@ -1,7 +1,6 @@
 ---
-title: "Physics Engine: Inertia Physics Engine"
-date: 2025-01-01
-description: "An article on my physics engine Inertia and how to use it and general overview"
+title: "Physics Engine: Inertia Overview
+description: "An overview of physics engine Inertia and how to use it and general overview"
 tags: ["Software Engineering", "Physics", "Astronomy"]
 type: post
 weight: 25
@@ -11,13 +10,9 @@ showTableOfContents: true
 
 # Building Inertia: A Journey into Real-Time Physics Simulation
 
-Ever wondered what it would be like to hold the universe in your hands? To tweak the laws of physics and watch planets dance around stars in real-time? That's exactly what drove me to create **Inertia**  – a Rust-based physics engine.
+Inertia is a Rust-based physics engine, that can help physicians or student model simulations with a broad uses, with a modular system, be it with the ui or actual simulation and object system.
 
 [Here you can watch a rudimentary example](https://www.youtube.com/watch?v=OP_sJ9b2lhw&ab_channel=DarisIdirene)
-{{< youtube OP_sJ9b2lhw >}}
-## The Spark of an Idea
-
-Fascinated by the elegance of Newton's laws governing celestial motions. I thought: What if students could experiment with gravity itself, watching cause and effect unfold in real-time?
 
 ## Why Rust? Why OpenGL?
 

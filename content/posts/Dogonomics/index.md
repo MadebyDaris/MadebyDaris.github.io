@@ -1,5 +1,5 @@
 ---
-title: "Dogonomics Financial Assistant development"
+title: "Financial Assistant: Dogonomics Overview"
 date: 2025-08-01
 description: "A recounting of Dogonomics my financial assistant that I'm developing, currently in the making."
 tags: ["AI/Machine learning", "Finance", "App Development"]
