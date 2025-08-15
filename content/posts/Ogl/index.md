@@ -1,5 +1,6 @@
 ---
 title: "Physics Engine: Inertia Overview
+date: 2025-07-28
 description: "An overview of physics engine Inertia and how to use it and general overview"
 tags: ["Software Engineering", "Physics", "Astronomy"]
 type: post
