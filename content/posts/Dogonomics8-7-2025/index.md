@@ -8,9 +8,9 @@ weight: 25
 katex: true
 showTableOfContents: true
 ---
-# Dogonomics - Financial Assistant Project
+# Dogonomics Devlog #1 : Fetching and serializing data
 
-_Development Notes - Updated 8/7/2025_
+_by Daris - Updated 8/7/2025_
 
 A modern financial assistant that helps investors make **informed bond investment decisions** and **stock decisions** by analyzing **market trends** and **news sentiment**.
 

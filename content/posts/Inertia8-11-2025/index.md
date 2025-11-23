@@ -10,7 +10,7 @@ showTableOfContents: true
 ---
 # Inertia Devlog #1 : UI enhancements
 
-*by Daris*
+_by Daris - Updated 8/7/2025_
 
 Welcome to the first devlog of **Inertia**, my Rust-based physics engine project After a week of tinkering with ui design, I'm excited to share what I've added so far.
 
