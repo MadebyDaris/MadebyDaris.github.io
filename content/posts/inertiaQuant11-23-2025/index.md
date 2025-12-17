@@ -9,7 +9,7 @@ katex: true
 showTableOfContents: true
 ---
 
-This year in L3 at the university of Paris-Saclay, compared to the previous intensive prep-school rhythm the past two years, has been less stressful. I can now work on my own project and study in-depth things I have a deep interest in.
+This year in my last year of undergraduate in physics and electronics, compared to the previous intensive prep-school rhythm the past two years, has been less stressful. I can now work on my own project and study in-depth things I have a deep interest in.
 
 I will do this devlog a bit differently, I'll start with the main cool feature (which was implemented after the UI/raycasting features had been implemented) quantum mechanics and then show the UI changes and raycastng.
 

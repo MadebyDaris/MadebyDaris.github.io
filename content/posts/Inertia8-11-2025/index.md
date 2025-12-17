@@ -1,5 +1,5 @@
 ---
-title: "Inertia devlog n°1 Enhanced UI"
+title: "Inertia devlog n°1 Enhanced UI !"
 date: 2025-08-11
 description: "Devlog n1 for Inertia the physics Engine."
 tags: ["Software Engineering", "Physics", "Astronomy"]
@@ -8,7 +8,6 @@ weight: 25
 katex: true
 showTableOfContents: true
 ---
-# Inertia Devlog #1 : UI enhancements
 
 _by Daris - Updated 8/7/2025_
 
