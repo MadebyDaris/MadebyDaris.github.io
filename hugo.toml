@@ -1,8 +1,7 @@
-baseURL = 'http://MadebyDaris.github.io/'
+baseURL = 'https://MadebyDaris.github.io/'
 languageCode = 'en-us'
 title = "IDIRENE DARIS"
 theme = 'Dawi'
-relativeURLs = true
 
 [taxonomies]
 tag = 'tags'
