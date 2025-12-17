@@ -45,6 +45,12 @@ tag = 'tags'
     weight = 5
 
   [[menu.main]]
+    identifier = "ResearchGate"
+    pre = "<span data-feather='book-open'></span>"
+    url = "https://www.researchgate.net/profile/Daris-Idirene"
+    weight = 5
+
+  [[menu.main]]
     identifier = "twitter"
     pre = "<span data-feather='twitter'></span>"
     url = "https://x.com/ByDaris"

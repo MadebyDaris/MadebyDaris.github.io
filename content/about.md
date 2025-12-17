@@ -1,8 +1,9 @@
 # About Me
 
 Hey, I’m **Daris Idirene** — welcome to my blog.
+I'm a student on a journey to try and incorporate pure math in everything around me, whether its phyics with computational physics, or finance and probability. If you like computer science, electronics, math, physics... or anything that's not biology, then this is your place.
 
-I’m a builder at heart with a strong interest in **physics**, **finance**, and the art of making things work — whether it’s a drone in midair, a stock analysis app, or a simulation engine that mimics real-world motion.
+I'm an international student. At 19 I've lived on three continents, within the French & English as well as Algerian curriculum, so if you're interested in a unique triple perspective on science, this is your place.
 
 ---
 

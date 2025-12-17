@@ -238,3 +238,147 @@
     --text-color-secondary: #6b7280;
     --accent-color: #3b82f6;
 }
+
+.home-hero {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.site-title {
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    padding-top: 0em;
+    border-spacing: 2px;
+    border-radius: 20px;
+    border: 6px solid white;
+    font-family: "Google Sans Code", monospace;
+}
+
+.site-subtitle {
+    font-size: 1.2em;
+    color: var(--text-color-secondary);
+    margin-bottom: 2rem;
+}
+
+.bio-section {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bio-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0.75rem 0;
+    color: var(--text-color);
+}
+
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem auto;
+    max-width: 800px;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
+    min-width: 240px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.github-card {
+    border-color: #6e5494;
+}
+
+.github-card:hover {
+    border-color: #333;
+    background: linear-gradient(135deg, rgba(51, 51, 51, 0.05), rgba(110, 84, 148, 0.05));
+}
+
+.researchgate-card {
+    border-color: #00ccbb;
+}
+
+.researchgate-card:hover {
+    border-color: #00a896;
+    background: linear-gradient(135deg, rgba(0, 204, 187, 0.05), rgba(0, 168, 150, 0.05));
+}
+
+.profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.github-card .profile-icon {
+    background: rgba(110, 84, 148, 0.1);
+    color: #6e5494;
+}
+
+.researchgate-card .profile-icon {
+    background: rgba(0, 204, 187, 0.1);
+    color: #00ccbb;
+}
+
+.profile-text {
+    text-align: left;
+}
+
+.profile-text h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.profile-text p {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+}
+
+@media (max-width: 768px) {
+    .profile-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-card {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .bio-section {
+        padding: 1.5rem;
+    }
+    
+    .bio-section p {
+        font-size: 1rem;
+    }
+}

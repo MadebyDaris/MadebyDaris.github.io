@@ -162,3 +162,66 @@ video {
     background: var(--accent-color) !important;
     color: white !important;
 }
+
+.bio-section {
+    background: rgba(20, 25, 30, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.bio-section p {
+    color: #e5e7eb !important;
+}
+
+.profile-card {
+    background: var(--dark-secondary-color) !important;
+    border-color: #374151 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.profile-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.github-card {
+    border-color: #8b7bb8 !important;
+}
+
+.github-card:hover {
+    border-color: #b8a9d6 !important;
+    background: linear-gradient(135deg, rgba(139, 123, 184, 0.1), rgba(184, 169, 214, 0.1)) !important;
+}
+
+.researchgate-card {
+    border-color: #00d4c4 !important;
+}
+
+.researchgate-card:hover {
+    border-color: #00ffeb !important;
+    background: linear-gradient(135deg, rgba(0, 212, 196, 0.1), rgba(0, 255, 235, 0.1)) !important;
+}
+
+.profile-icon {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.github-card .profile-icon {
+    background: rgba(139, 123, 184, 0.15) !important;
+    color: #b8a9d6 !important;
+}
+
+.researchgate-card .profile-icon {
+    background: rgba(0, 212, 196, 0.15) !important;
+    color: #00d4c4 !important;
+}
+
+.profile-text h3 {
+    color: #f9fafb !important;
+}
+
+.profile-text p {
+    color: #d1d5db !important;
+}
+
+.site-subtitle {
+    color: #9ca3af !important;
+}
