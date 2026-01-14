@@ -7,23 +7,6 @@
     {{- .Scratch.Set "avatarImgSrc" $avatarImgSrc -}}
 
     {{- partial "head.html" . -}}
-    <script src="{{ "js/p5.min.js" | relURL }}"></script>
-    <link rel="stylesheet" href="{{ "css/prof.css" | relURL }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          tex2jax: {
-            inlineMath: [['$','$'], ['\\(','\\)']],
-            displayMath: [['$$','$$'], ['\[','\]']],
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: { equationNumbers: { autoNumber: "AMS" },
-                 extensions: ["AMSmath.js", "AMSsymbols.js"] }
-          }
-        });
-    </script>
-    <script src="{{ "js/sketch.js" | relURL }}"></script>
     <body>
         <script>
             setThemeByUserPref();
@@ -33,5 +16,23 @@
         {{- block "main" . }}{{- end }}
         </main>
         {{- partial "footer.html" . -}}
+        
+        <link rel="stylesheet" href="{{ "css/prof.css" | absURL }}">
+        <script src="{{ "js/p5.min.js" | absURL }}"></script>
+        <script src="{{ "js/sketch.js" | absURL }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\[','\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: { equationNumbers: { autoNumber: "AMS" },
+                     extensions: ["AMSmath.js", "AMSsymbols.js"] }
+              }
+            });
+        </script>
     </body>
 </html>
