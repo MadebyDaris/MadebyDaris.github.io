@@ -54,11 +54,26 @@ Let $(X, \mathcal{A})$ and $(Y, \mathcal{B})$ be two measurable spaces. A functi
 
 $$\forall B \in \mathcal{B}, \quad f^{-1}(B) \in \mathcal{A}$$
 
+
+**Open Set:**
+
+Let $(X, \|\cdot\|)$ be a Normed Vector Space
+
+Consider some subset $U \subseteq X$
+
+$U$ is open if:$$\forall x \in U, \exists \epsilon > 0, B(x, \epsilon) \subseteq U$$
+
+Where $B(x, \epsilon) = \{ y \in X \mid \|x - y\| < \epsilon \}$ for $\epsilon \in \mathbb{R}$.
+
 **Borel Set:**
 
 The collection of Borel sets is the smallest sigma-algebra which contains all of the open sets. Every Borel set, in particular every open and closed set, is measurable.
 
 In other words,
+Let $X$ be a topological space (e.g., $\mathbb{R}$).
+
+Let $\mathcal{T}$ be the collection of all open sets in $X$.
+
 $$\mathfrak{S} = \{ \mathcal{B} \subseteq \mathcal{P}(X) \mid \mathcal{B} \text{ is a } \sigma\text{-algebra } \land \ \mathcal{T} \subseteq \Sigma \}$$
 Where $\mathcal{P}(X)$ are all the subsets of some abstract set $X$
 
@@ -107,7 +122,7 @@ $$\lim_{n \to \infty} \sup_{\lambda \in \mathbb{R}} |f(\lambda) - s_n(\lambda)| 
 Hence,
 $$(s_n)_{n\in\mathbf{N}} \xrightarrow{n \to \infty} f$$
 
-Since the sequence of scalar functions $(s_n)_{n\in\mathbf{N}}$ converges to $f$, let us show that the sequence of operators $(\Phi(s_n))_{n \in\mathbb{N}}$ converges to a specific operator.
+Since the sequence of scalar functions $(s_n)_{n \in \mathbb	{N}}$ converges to $f$, let us show that the sequence of operators $(\Phi(s_n))_{n \in\mathbb{N}}$ converges to a specific operator.
 
 $$\|\Phi(s)\|_{op} = \|s\|_\infty$$
 
@@ -182,9 +197,12 @@ $$\hat{H} = \int_{\sigma(H)} \lambda \, dE(\lambda)$$
 
 ## Stone's Theorem
 
-Let $(U_t)_{t\in\mathbb{R}}$ be a continuous one-parameter unitary group. Then there exists a unique operator  $A:\mathbf{D}_A→H$ that  is self-adjoint on $\mathbf{D}_A$ and such that
+Let $(U_t)_{t\in\mathbb{R}}$ be a continuous one-parameter unitary group. Then there exists a unique operator  $A:\mathbf{D}_A→H$ that  is self-adjoint on $\mathcal{D}_A$ and such that,
+
 $$\forall t \in \mathbb{R},U_t=e^{itA}$$
+
 Where,
+
 $${{\mathcal {D}}_{A}=\left\{\psi \in {\mathcal {H}}\left|\lim _{\varepsilon \to 0}{\frac {-i}{\varepsilon }}\left(U_{\varepsilon }(\psi )-\psi \right){\text{ exists}}\right.\right\}}$$
 
 We can now define,

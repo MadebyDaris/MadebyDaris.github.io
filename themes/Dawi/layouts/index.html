@@ -3,17 +3,18 @@
 	<div class="avatar">
     {{ if isset .Site.Params "avatarurl" }}
     <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ .Scratch.Get "avatarImgSrc" }}' alt="{{ .Site.Params.AvatarAltText|default "avatar" }}">
+    {{ else }}
+    <img class="size-s" style="width: 50%; height: 50%" src="/images/Image.png" alt="Daris Logo">
     {{ end }}
 	</div>
 
-    <h1 class="site-title">{{ .Site.Title }}</h1>
+    {{/*  <h1 class="site-title">{{ .Site.Title }}</h1>  */}}
     {{ if isset .Site.Params "description" }}
         <h2 class="site-subtitle">{{ .Site.Params.Description }}</h2>
     {{ end }}
 
     <div class="bio-section">
-        <p>Builder, Researcher, Engineer with a perfect mix of math, physics, and computer science.</p>
-        <p>Look through my publications, here or on ResearchGate and pic what you like.</p>
+        <p>Builder, Researcher, Engineer with a perfect mix of math, physics, and computer science. Look through my publications, here or on ResearchGate.</p>
     </div>
 
     <div class="profile-links">
