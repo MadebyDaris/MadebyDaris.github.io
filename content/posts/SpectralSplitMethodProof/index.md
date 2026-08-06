@@ -2,7 +2,7 @@
 title: "The Math Behind the Method: Spectral Theory and the Split-Operator Algorithm"
 date: 2026-01-01
 description: " In this post, I derive the rigorous definition of the Hamiltonian. I will demonstrate how we handle the domain issues of unbounded operators and how this spectral decomposition justifies the Fourier-transform used in the Split-Operator algorithm."
-tags: ["Physics", "Astronomy", "Quantum Mechanics", "Functional Analysis", "Algebra", "Math", "Measure Theory", "Analysis", "Complex & Real Analysis"]
+tags: ["Physics", "Quantum Mechanics", "Functional Analysis", "Algebra", "Math", "Measure Theory", "Analysis", "Complex & Real Analysis"]
 type: post
 weight: 25
 katex: true

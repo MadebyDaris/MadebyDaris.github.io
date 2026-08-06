@@ -1,4 +1,13 @@
-# Défi WiFi Hackathon
+---
+title: "Défi WiFi Hackathon with ANFR"
+date: 2025-04-01
+description: " In this article I will give a description of the plan behind the 2025 April hackathon with ANFR, and what we learned during the event as well as what I learned after taking a deeper look in how to deal with this project."
+tags: ["Electronics & Embedded Systems", "Robotics", "Programming", "French"]
+type: post
+weight: 25
+katex: true
+showTableOfContents: true
+---
 In this article I will give a description of the plan behind the 2025 April hackathon with ANFR, and what we learned during the event as well as what I learned after taking a deeper look in how to deal with this project.
 The project developed during a hackathon aimed at locating WiFi access points in real time using:
 - Network sniffing,

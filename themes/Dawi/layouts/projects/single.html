@@ -1,20 +1,4 @@
 {{ define "main" }}
-    {{ if eq .Type "post" }}
-        {{- partial "post.html" . -}}
-        {{- partial "toc.html" . -}}
-    {{ end }}
-
-    {{ if eq .Type "page" }}
-        {{- partial "page.html" . -}}
-        {{- partial "toc.html" . -}}
-    {{ end }}
-
-    {{ if eq .Type "project" }}
-        {{ template "project-single-main" . }}
-    {{ end }}
-{{ end }}
-
-{{ define "project-single-main" }}
 <article class="project-single container">
 
     <div class="project-single-hero">
@@ -55,14 +39,14 @@
     <div class="project-single-divider"></div>
 
     {{ if .Params.showTableOfContents }}
-    {{- partial "toc.html" . -}}
+    {{ partial "toc.html" . }}
     {{ end }}
 
     <div class="post-content project-content">
         {{ .Content }}
     </div>
 
-    {{- partial "prev-next.html" . -}}
-    {{- partial "back-to-top.html" . -}}
+    {{ partial "prev-next.html" . }}
+    {{ partial "back-to-top.html" . }}
 </article>
 {{ end }}

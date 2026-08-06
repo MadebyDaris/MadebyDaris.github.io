@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="projects-hero">
+    <div class="projects-hero-inner">
+        <h1 class="projects-hero-title">Projects</h1>
+        <p class="projects-hero-subtitle">Open-source hardware/software co-design, quantum tooling, and engineering systems.</p>
+    </div>
+</section>
+
+<section class="projects-grid-section">
+    <div class="projects-grid">
+        {{ range .Pages }}
+        <a href="{{ .Permalink }}" class="project-card">
+            <div class="project-card-header">
+                <div class="project-card-meta">
+                    {{ if .Params.status }}
+                    <span class="project-status status-{{ .Params.status | lower | replaceRE " " "-" }}">{{ .Params.status }}</span>
+                    {{ end }}
+                    <time class="project-date">{{ dateFormat "2006" .Date }}</time>
+                </div>
+                <h2 class="project-card-title">{{ .Title | markdownify }}</h2>
+                <p class="project-card-desc">{{ .Params.description }}</p>
+            </div>
+            <div class="project-card-footer">
+                {{ if .Params.tech }}
+                <div class="project-tech-tags">
+                    {{ range first 4 .Params.tech }}
+                    <span class="tech-tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+                <span class="project-read-link">Read more →</span>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

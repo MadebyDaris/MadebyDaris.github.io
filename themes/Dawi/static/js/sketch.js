@@ -1,6 +1,5 @@
 let stars = [];
-let particles = [];
-let time = 0;
+let nodes = [];
 
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
@@ -8,93 +7,95 @@ function setup() {
   cnv.style('z-index', '-1');
   cnv.style('position', 'fixed');
 
-  for (let i = 0; i < 100; i++) {
+  // Background stars (depth layer 1)
+  for (let i = 0; i < 150; i++) {
     stars.push(new Star());
   }
 
-  // Create flowing particles
-  for (let i = 0; i < 40; i++) {
-    particles.push(new Particle());
+  // Network nodes (depth layer 2)
+  // Fewer nodes on small screens to prevent clutter
+  let numNodes = windowWidth < 800 ? 30 : 60;
+  for (let i = 0; i < numNodes; i++) {
+    nodes.push(new Node());
   }
 }
 
 function draw() {
-  let theme = getCurrentTheme();
-  if (theme === "dark") {
-    background(8, 8, 12, 50);
-  } else {
-    background(255, 255, 255, 50);
-  }
+  // Deep dark background with motion blur trail effect
+  // Color matches --card-bg: #0d1117 = rgb(13, 17, 23)
+  background(13, 17, 23, 100);
 
-  time += 0.01;
-
+  // Draw background stars
   for (let star of stars) {
     star.update();
     star.show();
   }
 
-  for (let particle of particles) {
-    particle.update();
-    particle.show();
+  // Draw node connections (constellation effect)
+  for (let i = 0; i < nodes.length; i++) {
+    nodes[i].update();
+    for (let j = i + 1; j < nodes.length; j++) {
+      let d = dist(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+      let maxDist = 160;
+      
+      if (d < maxDist) {
+        // Opacity inversely proportional to distance
+        let alpha = map(d, 0, maxDist, 70, 0);
+        // Accent color matching hsl(260, 75%, 68%) ~ rgb(150, 115, 230)
+        stroke(150, 115, 230, alpha); 
+        strokeWeight(1.2);
+        line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+      }
+    }
   }
-}
 
-function getCurrentTheme() {
-  return localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  // Draw nodes on top of lines
+  for (let node of nodes) {
+    node.show();
+  }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  // Adjust node count on resize
+  let targetNodes = windowWidth < 800 ? 30 : 60;
+  while (nodes.length > targetNodes) nodes.pop();
+  while (nodes.length < targetNodes) nodes.push(new Node());
 }
 
-class Particle {
+class Node {
   constructor() {
-    this.reset();
-    this.y = random(height);
-    this.offsetX = random(1000);
-    this.offsetY = random(1000);
-  }
-
-  reset() {
     this.x = random(width);
-    this.y = -20;
-    this.size = random(2, 4);
-    this.speed = random(0.3, 0.8);
-    this.offsetX = random(1000);
-    this.offsetY = random(1000);
+    this.y = random(height);
+    this.vx = random(-0.25, 0.25);
+    this.vy = random(-0.25, 0.25);
+    this.size = random(1.5, 3.5);
   }
 
   update() {
-    // Gentle flowing motion using Perlin noise
-    let noiseX = noise(this.offsetX + time) * 2 - 1;
-    let noiseY = noise(this.offsetY + time) * 2 - 1;
+    // Gentle mouse interaction (parallax)
+    let dx = mouseX - width / 2;
+    let dy = mouseY - height / 2;
     
-    this.x += noiseX * 0.5;
-    this.y += this.speed + noiseY * 0.3;
-    
-    this.offsetX += 0.01;
-    this.offsetY += 0.01;
+    // Slow drift + mouse push
+    this.x += this.vx - (dx * 0.00015);
+    this.y += this.vy - (dy * 0.00015);
 
-    // Wrap around
-    if (this.y > height + 20) {
-      this.reset();
-    }
-    if (this.x < -20) this.x = width + 20;
-    if (this.x > width + 20) this.x = -20;
+    // Wrap around screen gracefully
+    if (this.x < -50) this.x = width + 50;
+    if (this.x > width + 50) this.x = -50;
+    if (this.y < -50) this.y = height + 50;
+    if (this.y > height + 50) this.y = -50;
   }
 
   show() {
-    let theme = getCurrentTheme();
     noStroke();
-    
-    if (theme === "dark") {
-      fill(100, 150, 200, 60);
-    } else {
-      fill(150, 180, 200, 60);
-    }
-    
+    // Slightly brighter accent for nodes
+    fill(170, 140, 240, 140); 
     ellipse(this.x, this.y, this.size);
+    // Subtle glow core
+    fill(255, 255, 255, 200);
+    ellipse(this.x, this.y, this.size * 0.4);
   }
 }
 
@@ -102,18 +103,30 @@ class Star {
   constructor() {
     this.x = random(width);
     this.y = random(height);
-    this.size = random(1, 2);
-    this.brightness = random(50, 150);
+    this.size = random(0.5, 2);
+    this.baseAlpha = random(20, 90);
+    this.phase = random(TWO_PI);
   }
 
   update() {
-    this.brightness += sin(frameCount * 0.05) * 2;
+    // Very subtle parallax drift for stars (farther away)
+    let dx = mouseX - width / 2;
+    let dy = mouseY - height / 2;
+    this.x -= dx * 0.00005;
+    this.y -= dy * 0.00005;
+    
+    if (this.x < 0) this.x = width;
+    if (this.x > width) this.x = 0;
+    if (this.y < 0) this.y = height;
+    if (this.y > height) this.y = 0;
   }
 
   show() {
-    let theme = getCurrentTheme();
+    // Twinkle effect
+    let alpha = this.baseAlpha + sin(frameCount * 0.02 + this.phase) * 30;
     noStroke();
-    theme === "dark" ? fill(255, this.brightness) : fill(100, 120, 140, this.brightness * 0.5);
+    // Muted off-white text color
+    fill(230, 237, 243, alpha);
     ellipse(this.x, this.y, this.size);
   }
 }

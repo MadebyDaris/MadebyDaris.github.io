@@ -2,6 +2,7 @@ baseURL = 'https://MadebyDaris.github.io/'
 languageCode = 'en-us'
 title = "IDIRENE DARIS"
 theme = 'Dawi'
+description = "EECS Engineer · Hardware / Software Co-Design · Nanofabrication"
 
 [taxonomies]
 tag = 'tags'
@@ -14,16 +15,16 @@ tag = 'tags'
     weight = 1
 
   [[menu.main]]
+    name = "Projects"
+    pre = "<span data-feather='cpu'></span>"
+    url = "/projects/"
+    weight = 2
+
+  [[menu.main]]
     name = "Posts"
     pre = "<span data-feather='book'></span>"
     url = "/posts/"
-    weight = 2
-
-  # [[menu.main]]
-  #   name = "Projects"
-  #   pre = "<span data-feather='code'></span>"
-  #   url = "/projects/"
-  #   weight = 3
+    weight = 3
 
   [[menu.main]]
     name = "Tags"
@@ -39,7 +40,7 @@ tag = 'tags'
 
   [[menu.main]]
     identifier = "Linkedin"
-    pre = "<span data-feather='Linkedin'></span>"
+    pre = "<span data-feather='linkedin'></span>"
     url = "https://www.linkedin.com/in/daris-idirene-661a66341/"
     weight = 5
 
@@ -74,20 +75,36 @@ tag = 'tags'
     weight = 6
 
 [params]
-  # ... your existing params
-  
+  description = "EECS Engineer · Microprocessors · HPC · Nanofabrication"
+  showPostsOnHomePage = "recent"
+  NumberPostsOnHomePage = 3
+
   [[params.skills]]
-    name = "Engineering Solutions"
-    description = "Creating modern, applications/software solutions for various industries with a wide variety of technologies and frameworks"
-  
+    name = "Hardware Design"
+    icon = "⚙️"
+    description = "RISC-V architecture, SystemVerilog RTL, HLS compiler design, CV-X-IF coprocessor interfaces, FPGA workflows"
+
   [[params.skills]]
-    name = "Content Writing"
-    description = "Crafting engaging and informative blog posts and articles"
-  
+    name = "Systems Programming"
+    icon = "🔧"
+    description = "Julia, C/C++, Rust — compiler toolchains, LLVM IR, low-level memory management, and performance-critical code"
+
   [[params.skills]]
-    name = "Problem Solving"
-    description = "Analyzing complex problems and developing effective solutions"
-  
+    name = "Nanofabrication"
+    icon = "🔬"
+    description = "Cleanroom process experience at Alice & Bob — cat-qubit device fabrication, lithography, wafer inspection tooling"
+
   [[params.skills]]
-    name = "Artistic Design"
-    description = "Designing visually appealing graphics and layouts for digital and print media"
+    name = "HPC & Simulation"
+    icon = "📐"
+    description = "Physics simulation engines, quantum mechanics solvers (split-operator, DFG scheduling), numerical methods"
+
+  [[params.skills]]
+    name = "Math & Physics"
+    icon = "∂"
+    description = "Functional analysis, spectral theory, quantum mechanics, computational physics, and applied probability"
+
+  [[params.skills]]
+    name = "Software Engineering"
+    icon = "💻"
+    description = "Full-stack tooling, app development (Flutter, Go), REST APIs, data pipelines, and algorithmic trading systems"

@@ -1,50 +1,47 @@
 {{ define "main" }}
-<section class="home-hero">
-	<div class="avatar">
-    {{ if isset .Site.Params "avatarurl" }}
-    <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ .Scratch.Get "avatarImgSrc" }}' alt="{{ .Site.Params.AvatarAltText|default "avatar" }}">
-    {{ else }}
-    <img class="size-s" style="width: 50%; height: 50%" src="/images/Image.png" alt="Daris Logo">
-    {{ end }}
-	</div>
+<section class="home-hero blog-style-hero">
+    <div class="hero-header-row">
+        <div class="avatar">
+            {{ if isset .Site.Params "avatarurl" }}
+            <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ .Scratch.Get "avatarImgSrc" }}'
+                alt="{{ .Site.Params.AvatarAltText|default " avatar" }}">
+            {{ else }}
+            <img class="size-s" style="width: 50%; height: 50%" src="/images/Image.png" alt="Daris Logo">
+            {{ end }}
+        </div>
 
-    {{/*  <h1 class="site-title">{{ .Site.Title }}</h1>  */}}
-    {{ if isset .Site.Params "description" }}
-        <h2 class="site-subtitle">{{ .Site.Params.Description }}</h2>
-    {{ end }}
-
-    <div class="bio-section">
-        <p>Builder, Researcher, Engineer with a perfect mix of math, physics, and computer science. Look through my publications, here or on ResearchGate.</p>
+        <div class="hero-text">
+            <h1 class="site-title">{{ .Site.Title }}</h1>
+            {{ if isset .Site.Params "description" }}
+            <h2 class="site-subtitle">{{ .Site.Params.Description }}</h2>
+            {{ end }}
+        </div>
     </div>
 
-    <div class="profile-links">
+    <div class="bio-section clean-bio">
+        <p>Builder, Researcher, EECS Engineer, Computer Engineering, HPC, Quantum Computing and Nanofabrication.</p>
+    </div>
+
+    <div class="profile-links compact-links">
         <a href="https://github.com/madebydaris" class="profile-card github-card" target="_blank" rel="noopener">
             <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
             </div>
-            <div class="profile-text">
-                <h3>GitHub</h3>
-                <p>Code & Projects</p>
-            </div>
+            <span>GitHub</span>
         </a>
-        <a href="https://www.researchgate.net/profile/Daris-Idirene" class="profile-card researchgate-card" target="_blank" rel="noopener">
+        <a href="https://www.researchgate.net/profile/Daris-Idirene" class="profile-card researchgate-card"
+            target="_blank" rel="noopener">
             <div class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1.5 4c-1.381 0-2.5 1.119-2.5 2.5v7c0 1.381 1.119 2.5 2.5 2.5h3c1.381 0 2.5-1.119 2.5-2.5v-7c0-1.381-1.119-2.5-2.5-2.5h-3zm0 2h3c.276 0 .5.224.5.5v2.5h-4V8.5c0-.276.224-.5.5-.5zm-.5 5h4v2c0 .276-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5v-2z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19.5 0h-15A4.5 4.5 0 0 0 0 4.5v15A4.5 4.5 0 0 0 4.5 24h15a4.5 4.5 0 0 0 4.5-4.5v-15A4.5 4.5 0 0 0 19.5 0zm-4.8 18.6h-2.1v-5.25h-.96v-1.65h.96V10.5c0-1.56.63-2.25 2.34-2.25h1.2v1.65h-.72c-.63 0-.72.21-.72.72v1.08h1.47l-.18 1.65H15.3V18.6zm-5.7 0H7.5V8.25h1.5V18.6zM8.25 7.2a1.05 1.05 0 1 1 0-2.1 1.05 1.05 0 0 1 0 2.1z" />
                 </svg>
             </div>
-            <div class="profile-text">
-                <h3>ResearchGate</h3>
-                <p>Academic Publications</p>
-            </div>
+            <span>ResearchGate</span>
         </a>
-    </div>
-
-    <div class="home-cta-buttons">
-        <a href="{{ "posts/" | relURL }}" class="cta-button primary">View All Posts</a>
-        <a href="{{ "about/" | relURL }}" class="cta-button secondary">About Me</a>
     </div>
 
 </section>
@@ -56,8 +53,8 @@
     <ul class="gk-social-icons-list">
         {{ range .Site.Params.SocialIcons }}
         <li class="gk-social-icon">
-            <a href="{{ .url }}" {{ if .rel }}rel="{{ .rel }}"{{ end }} aria-label="Learn more on {{ .name }}">
-                <img class="svg-inject" src="{{ relURL "svg/icons/" }}{{ .name | lower }}.svg" alt="">
+            <a href="{{ .url }}" {{ if .rel }}rel="{{ .rel }}" {{ end }} aria-label="Learn more on {{ .name }}">
+                <img class="svg-inject" src="{{ relURL " svg/icons/" }}{{ .name | lower }}.svg" alt="">
             </a>
         </li>
         {{ end }}
@@ -66,84 +63,68 @@
 {{ end }}
 
 {{ if (or
-    (and (fileExists "content/_index.md") .Content)
-    (fileExists "content/index-about.md")) }}
-        <section class="home-content">
-            {{ or .Content (readFile "index-about.md" | markdownify) }}
-        </section>
+(and (fileExists "content/_index.md") .Content)
+(fileExists "content/index-about.md")) }}
+<section class="home-content">
+    {{ or .Content (readFile "index-about.md" | markdownify) }}
+</section>
 {{ end }}
 
-{{ if isset .Site.Params "showpostsonhomepage" }}
-
-    <div class="home-posts list-posts">
-        <h2>{{ i18n (.Site.Params.ShowPostsOnHomePage | humanize) }}</h2>
-
-    {{ $posts := where .Site.Pages "Params.type" "post" }}
-
-    {{ if eq .Site.Params.ShowPostsOnHomePage "popular" }}
-        {{ range $posts.ByWeight | first (or .Site.Params.NumberPostsOnHomePage 4) }}
-            {{- partial "list-posts.html" . -}}
-        {{ end }}
-    {{ else if eq .Site.Params.ShowPostsOnHomePage "recent" }}
-        {{ range $posts.ByDate.Reverse | first (or .Site.Params.NumberPostsOnHomePage 4) }}
-            {{- partial "list-posts.html" . -}}
-        {{ end }}
-    {{ end }}
+<!-- Featured Projects Section -->
+{{ $projects := where .Site.Pages "Params.type" "project" }}
+{{ if gt (len $projects) 0 }}
+<section class="home-feed-section">
+    <div class="feed-header">
+        <h2 class="feed-title">Featured Projects</h2>
+        <a href="{{ " projects/" | relURL }}" class="feed-view-all">All Projects →</a>
     </div>
-
-
-{{ end }}
-
-<!-- Featured/Latest Posts Section -->
-{{ $posts := where .Site.Pages "Params.type" "post" }}
-{{ if gt (len $posts) 0 }}
-<section class="home-posts-featured">
-    <h2 class="section-title">Latest Posts</h2>
-    <div class="featured-posts-grid">
-        {{ range ($posts.ByDate.Reverse | first 3) }}
-        <article class="featured-post">
-            {{ if .Params.image }}
-            <div class="featured-post-image">
-                <a href="{{ .Permalink }}">
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
-                </a>
+    <div class="blog-feed-list">
+        {{ range ($projects.ByDate.Reverse | first 5) }}
+        <article class="feed-item">
+            <div class="feed-item-meta">
+                <time class="feed-date">{{ dateFormat "Jan 2006" .Date }}</time>
+                {{ if .Params.status }}
+                <span class="feed-status status-{{ .Params.status | lower | replaceRE " " " -" }}">{{ .Params.status
+                    }}</span>
+                {{ end }}
             </div>
-            {{ end }}
-            <div class="featured-post-content">
-                <h3><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
-                <p class="featured-post-excerpt">{{ .Summary | truncate 120 }}</p>
-                <div class="featured-post-meta">
-                    <time class="post-date">{{ dateFormat "January 2, 2006" .Date }}</time>
-                    {{ if .Params.tags }}
-                    <div class="post-tags-inline">
-                        {{ range first 2 .Params.tags }}
-                        <span class="tag-inline">{{ . }}</span>
-                        {{ end }}
-                    </div>
-                    {{ end }}
-                </div>
-                <a href="{{ .Permalink }}" class="read-more">Read More →</a>
-            </div>
+            <h3 class="feed-item-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
+            <p class="feed-item-excerpt">{{ .Params.description | truncate 150 }}</p>
         </article>
         {{ end }}
     </div>
 </section>
 {{ end }}
 
-<!-- Skills/Expertise Section (Professional Touch) -->
-{{ if isset .Site.Params "skills" }}
-<section class="home-skills">
-    <h2 class="section-title">Skills & Expertise</h2>
-    <div class="skills-grid">
-        {{ range .Site.Params.Skills }}
-        <div class="skill-item">
-            <div class="skill-icon">{{ .icon | safeHTML }}</div>
-            <h3>{{ .name }}</h3>
-            <p>{{ .description }}</p>
-        </div>
+<!-- Latest Posts Section -->
+{{ $posts := where .Site.Pages "Params.type" "post" }}
+{{ if gt (len $posts) 0 }}
+<section class="home-feed-section">
+    <div class="feed-header">
+        <h2 class="feed-title">Latest Posts</h2>
+        <a href="{{ " posts/" | relURL }}" class="feed-view-all">All Posts →</a>
+    </div>
+    <div class="blog-feed-list">
+        {{ range ($posts.ByDate.Reverse | first 5) }}
+        <article class="feed-item">
+            <div class="feed-item-meta">
+                <time class="feed-date">{{ dateFormat "Jan 2, 2006" .Date }}</time>
+                {{ if .Params.tags }}
+                <div class="feed-tags-inline">
+                    {{ range first 2 .Params.tags }}
+                    <span class="feed-tag-inline">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+            <h3 class="feed-item-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
+            <p class="feed-item-excerpt">{{ .Summary | truncate 150 }}</p>
+        </article>
         {{ end }}
     </div>
 </section>
 {{ end }}
+
+
 
 {{ end }}

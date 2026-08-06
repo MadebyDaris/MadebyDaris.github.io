@@ -8,9 +8,7 @@
 
     {{- partial "head.html" . -}}
     <body>
-        <script>
-            setThemeByUserPref();
-        </script>
+
         {{- partial "header.html" . -}}
         <main id="content">
         {{- block "main" . }}{{- end }}
