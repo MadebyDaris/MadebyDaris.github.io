@@ -76,7 +76,7 @@
 <section class="home-feed-section">
     <div class="feed-header">
         <h2 class="feed-title">Featured Projects</h2>
-        <a href="{{ " projects/" | relURL }}" class="feed-view-all">All Projects →</a>
+        <a href="{{ "projects/" | relURL }}" class="feed-view-all">All Projects →</a>
     </div>
     <div class="blog-feed-list">
         {{ range ($projects.ByDate.Reverse | first 5) }}
@@ -102,7 +102,7 @@
 <section class="home-feed-section">
     <div class="feed-header">
         <h2 class="feed-title">Latest Posts</h2>
-        <a href="{{ " posts/" | relURL }}" class="feed-view-all">All Posts →</a>
+        <a href="{{ "posts/" | relURL }}" class="feed-view-all">All Posts →</a>
     </div>
     <div class="blog-feed-list">
         {{ range ($posts.ByDate.Reverse | first 5) }}
