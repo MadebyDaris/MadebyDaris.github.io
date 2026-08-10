@@ -936,6 +936,7 @@ code, pre, kbd {
     .profile-card {
         width: 100%;
         max-width: 320px;
+        justify-content: center;
     }
 
     .bio-section {

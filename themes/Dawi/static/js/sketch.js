@@ -41,9 +41,17 @@ function draw() {
       if (d < maxDist) {
         // Opacity inversely proportional to distance
         let alpha = map(d, 0, maxDist, 70, 0);
-        // Accent color matching hsl(260, 75%, 68%) ~ rgb(150, 115, 230)
-        stroke(150, 115, 230, alpha); 
-        strokeWeight(1.2);
+        
+        // Average pulse of the two connected nodes
+        let avgPulse = (nodes[i].pulse + nodes[j].pulse) / 2;
+        
+        // Subtle color shift
+        let r = lerp(150, 110, avgPulse);
+        let g = lerp(115, 150, avgPulse);
+        let b = lerp(230, 240, avgPulse);
+        
+        stroke(r, g, b, alpha + avgPulse * 15); 
+        strokeWeight(1.2 + avgPulse * 0.4);
         line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
       }
     }
@@ -70,6 +78,7 @@ class Node {
     this.vx = random(-0.25, 0.25);
     this.vy = random(-0.25, 0.25);
     this.size = random(1.5, 3.5);
+    this.pulse = 0;
   }
 
   update() {
@@ -77,9 +86,33 @@ class Node {
     let dx = mouseX - width / 2;
     let dy = mouseY - height / 2;
     
-    // Slow drift + mouse push
-    this.x += this.vx - (dx * 0.00015);
-    this.y += this.vy - (dy * 0.00015);
+    // Mouse hover repel / click attract
+    let dMouse = dist(mouseX, mouseY, this.x, this.y);
+    let interactX = 0;
+    let interactY = 0;
+    
+    if (dMouse < 150) {
+      let forceMag = mouseIsPressed ? -1.5 : 2.0;
+      let force = map(dMouse, 0, 150, forceMag, 0);
+      if (dMouse > 0.1) {
+        interactX = (this.x - mouseX) / dMouse * force;
+        interactY = (this.y - mouseY) / dMouse * force;
+      }
+      
+      // Localized pulse effect when pressed
+      if (mouseIsPressed) {
+        let targetPulse = map(dMouse, 0, 150, 1, 0);
+        this.pulse = lerp(this.pulse, targetPulse, 0.15);
+      } else {
+        this.pulse = lerp(this.pulse, 0, 0.05);
+      }
+    } else {
+      this.pulse = lerp(this.pulse, 0, 0.05);
+    }
+    
+    // Slow drift + mouse push + interaction
+    this.x += this.vx - (dx * 0.00015) + interactX;
+    this.y += this.vy - (dy * 0.00015) + interactY;
 
     // Wrap around screen gracefully
     if (this.x < -50) this.x = width + 50;
@@ -90,12 +123,18 @@ class Node {
 
   show() {
     noStroke();
-    // Slightly brighter accent for nodes
-    fill(170, 140, 240, 140); 
-    ellipse(this.x, this.y, this.size);
+    // Subtle localized color shift
+    let r = lerp(170, 130, this.pulse);
+    let g = lerp(140, 170, this.pulse);
+    let b = lerp(240, 250, this.pulse);
+    
+    fill(r, g, b, 140 + this.pulse * 25); 
+    let currentSize = this.size + this.pulse * 1.0;
+    ellipse(this.x, this.y, currentSize);
+    
     // Subtle glow core
-    fill(255, 255, 255, 200);
-    ellipse(this.x, this.y, this.size * 0.4);
+    fill(255, 255, 255, 200 + this.pulse * 30);
+    ellipse(this.x, this.y, currentSize * 0.4);
   }
 }
 

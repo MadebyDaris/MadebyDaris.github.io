@@ -15,22 +15,28 @@ tag = 'tags'
     weight = 1
 
   [[menu.main]]
+    name = "About"
+    pre = "<span data-feather='user'></span>"
+    url = "/about/"
+    weight = 2
+
+  [[menu.main]]
     name = "Projects"
     pre = "<span data-feather='cpu'></span>"
     url = "/projects/"
-    weight = 2
+    weight = 3
 
   [[menu.main]]
     name = "Posts"
     pre = "<span data-feather='book'></span>"
     url = "/posts/"
-    weight = 3
+    weight = 4
 
   [[menu.main]]
     name = "Tags"
     pre = "<span data-feather='tag'></span>"
     url = "/tags/"
-    weight = 4
+    weight = 5
 
   [[menu.main]]
     identifier = "github"
@@ -75,7 +81,7 @@ tag = 'tags'
     weight = 6
 
 [params]
-  description = "EECS Engineer · Microprocessors · HPC · Nanofabrication"
+  description = "EECS Engineer · Computer Architectures · RISC-V · HPC · Nanofabrication"
   showPostsOnHomePage = "recent"
   NumberPostsOnHomePage = 3
 
