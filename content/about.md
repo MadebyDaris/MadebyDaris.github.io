@@ -1,6 +1,6 @@
 # About Me
 
-Hey, I'm **Daris Idirene** — EECS student, engineer, and occasional mathematician.
+Hey, I'm Daris Idirene, an EECS student, engineer, and occasional mathematician.
 
 I'm finishing my undergraduate degree in **Electrical Engineering and Computer Science**, having trained in a rigorous **French preparatory scientific program** (CPGE) before that. My work sits at the intersection of **computer architecture, hardware/software co-design, and quantum physics** — the kind of place where you need to understand both the silicon and the math behind it.
 
@@ -18,24 +18,13 @@ I've built physics engines (Inertia), quantum solvers (split-operator method, Sp
 ### Systems & Tooling
 From Rust CLI tools to Go financial data APIs, I like building things that are fast and correct. I've worked with LLVM, Verilator, Julia metaprogramming, and C++ test benches in my day-to-day.
 
----
-
 ## Background
 
-* **EECS undergraduate**, international student
-* **Internship at Alice & Bob** — cleanroom nanofabrication, qubit device tooling
+* **EECS undergrad**, international student
 * **Languages**: Julia, C/C++, Rust, Go, Python, SystemVerilog
-* **Interests**: HPC, computer architecture, quantum computing
+* **Interests**: Hardware/Software Co-Design, HPC, computer architecture, quantum computing
 
 On the creative side, I make **3D art in Blender** and document my projects in writing.
-
----
-
-## Why I Write
-
-Writing forces precision. I publish to stay accountable to my ideas, share what I learn, and occasionally prove a theorem in public.
-
----
 
 ## Let's Connect
 

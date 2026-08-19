@@ -81,12 +81,12 @@ tag = 'tags'
     weight = 6
 
 [params]
-  description = "EECS Engineer · Computer Architectures · RISC-V · HPC · Nanofabrication"
+  description = "EECS Engineer · Hardware/Software Co-Design · Computer Architectures · RISC-V · HPC · Nanofabrication"
   showPostsOnHomePage = "recent"
   NumberPostsOnHomePage = 3
 
   [[params.skills]]
-    name = "Hardware Design"
+    name = "Hardware/Software Co-Design"
     icon = "⚙️"
     description = "RISC-V architecture, SystemVerilog RTL, HLS compiler design, CV-X-IF coprocessor interfaces, FPGA workflows"
 

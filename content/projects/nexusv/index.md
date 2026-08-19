@@ -19,8 +19,6 @@ It enables developers to write compute-intensive mathematical algorithms in **Ju
 
 Unlike traditional EDA macro-generators, Nexus-V is an *algorithmic synthesizer*. It intercepts Julia code at the LLVM IR level, performs hardware-specific optimizations (loop unrolling, pipelining), schedules the dataflow graph, and emits both the physical SystemVerilog RTL and the corresponding RISC-V C software bindings.
 
----
-
 ## Why Build This?
 
 The standard flow for custom hardware accelerators is painfully manual: write a Verilog template, maintain YAML descriptors, hand-craft C driver code. Tools like Cadence Xtensa exist but are expensive and proprietary.
@@ -31,8 +29,6 @@ NexusV takes a different approach:
 - **Pure Algorithmic Input** — No hand-written Verilog templates, no YAML. Your Julia algorithm *is* your hardware specification.
 - **Modern Workloads** — Built to tackle Edge AI (neural network MAC arrays) and Post-Quantum Cryptography (modular polynomial arithmetic for Kyber/CRYSTALS).
 - **ASIP Paradigm** — Operates like commercial ASIP generators (Cadence Xtensa), but fully open-source and RISC-V native.
-
----
 
 ## System Architecture
 
@@ -67,8 +63,6 @@ The scheduled DFG is emitted as:
 2. Automatically routed inside a pre-written **CV-X-IF FSM shell** (`cvxif_nexus_shell.sv`)
 3. A `nexus_bindings.h` C header with inline-assembly (`.insn`) to invoke the hardware from software
 
----
-
 ## Repository Structure
 
 ```
@@ -87,16 +81,12 @@ NexusV/
 └── docs/                 # Architecture specs & integration guides
 ```
 
----
-
 ## Target Workloads
 
 | Workload | Algorithm | Hardware Output |
 |---|---|---|
 | **Post-Quantum Crypto** | Kyber NTT (polynomial multiplication) | Modular butterfly datapath |
 | **Edge AI** | Neural network MAC (convolution) | Systolic MAC array |
-
----
 
 ## Current Status
 
@@ -106,8 +96,6 @@ NexusV is actively under development. The Julia frontend (macro infrastructure) 
 - Complete DFG → schedule → SystemVerilog emission for a Kyber NTT kernel
 - End-to-end Verilator simulation on X-HEEP RISC-V platform
 - Benchmark vs. software baseline (cycles, area, throughput)
-
----
 
 ## Resources
 
