@@ -1,6 +1,6 @@
 ---
 title: "Building Acceleration RoCC Hardware for Hyperdimensional Computing"
-date: 2026-08-01
+date: 2026-01-08
 description: "This post introduces hyperdimensional computing, explains why its primitive operations make it an interesting target for custom hardware, and walks through the design of a small HDC accelerator built as a RoCC unit for the Chipyard/RocketChip ecosystem."
 tags: ["Hyperdimensional Computing", "Neuroscience", "Computer Architecture"]
 type: post

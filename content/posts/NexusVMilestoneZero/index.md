@@ -1,10 +1,10 @@
 ---
 title: "Giving NexusV a Memory, A look into Scratchpads, AXI, and the Small Protocols That Hold It Together"
-date: 2026-08-20
+date: 2026-08-10
 description: "This post is a deep dive into the specific engineering choices I made while designing the NexusV processor, focusing on the memory system that connects the CPU core to its surrounding hardware."
 tags: ["RISC-V", "Computer Architecture", "AXI", "Chipyard", "Open Source", "Verification"]
 type: post
-weight: 1
+weight: 2
 katex: true
 showTableOfContents: true
 ---
