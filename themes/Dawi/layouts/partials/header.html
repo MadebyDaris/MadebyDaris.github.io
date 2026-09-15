@@ -14,6 +14,11 @@
         </div>
 
         <div class="nav-links">
+            <div class="nav-link">
+                <a href="#" id="command-palette-trigger" aria-label="Search">
+                    <span data-feather="search"></span>
+                </a>
+            </div>
             {{ range .Site.Menus.main }}
             <div class="nav-link">
                 <a href="{{ .URL | absURL }}" aria-label="{{ .Identifier }}" {{ if .Params.NewPage -}}target="_blank" {{- end -}}>

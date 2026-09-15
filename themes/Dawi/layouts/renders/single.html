@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="render-single container">
+
+    <div class="render-single-hero">
+        <div class="render-single-meta-top">
+            {{ if .Params.tool }}
+            <span class="render-tool-badge">{{ .Params.tool }}</span>
+            {{ end }}
+            <time class="render-date">{{ dateFormat "January 2006" .Date }}</time>
+        </div>
+
+        <h1 class="render-single-title">{{ .Title }}</h1>
+
+        {{ if .Params.description }}
+        <p class="render-single-subtitle">{{ .Params.description }}</p>
+        {{ end }}
+
+        {{ if .Params.tags }}
+        <div class="render-single-tags">
+            {{ range .Params.tags }}
+            <span class="tech-tag">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+
+    <div class="render-single-image">
+        {{ with .Resources.GetMatch "images/cover.*" }}
+        <img src="{{ .RelPermalink }}" alt="{{ $.Title }}">
+        {{ else }}
+        {{ with .Params.cover }}
+        <img src="{{ path.Join $.RelPermalink . | relURL }}" alt="{{ $.Title }}">
+        {{ end }}
+        {{ end }}
+    </div>
+
+    {{ if .Content }}
+    <div class="post-content render-content">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    <div class="render-single-actions">
+        <a href="/renders/" class="btn-project-action btn-secondary">← All Renders</a>
+    </div>
+
+    {{ partial "back-to-top.html" . }}
+</article>
+{{ end }}

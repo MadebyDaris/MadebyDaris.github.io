@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section class="renders-hero">
+    <div class="renders-hero-inner">
+        <h1 class="renders-hero-title">{{ .Title }}</h1>
+        <p class="renders-hero-subtitle">{{ .Description }}</p>
+    </div>
+</section>
+
+<section class="renders-grid-section">
+    <div class="renders-grid">
+        {{ range .Pages.ByWeight }}
+        {{ $page := . }}
+        <a href="{{ $page.Permalink }}" class="render-card spotlight">
+            <div class="render-card-image">
+                {{ with $page.Resources.GetMatch "images/thumb.*" }}
+                <img src="{{ .RelPermalink }}" alt="{{ $page.Title }}" loading="lazy">
+                {{ else }}
+                {{ with $page.Params.cover }}
+                <img src="{{ path.Join $page.RelPermalink . | relURL }}" alt="{{ $page.Title }}" loading="lazy">
+                {{ end }}
+                {{ end }}
+            </div>
+            <div class="render-card-info">
+                <h2 class="render-card-title">{{ $page.Title }}</h2>
+                {{ if $page.Params.tool }}
+                <span class="render-card-tool">{{ $page.Params.tool }}</span>
+                {{ end }}
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

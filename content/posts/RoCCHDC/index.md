@@ -10,7 +10,7 @@ showTableOfContents: true
 ---
 
 
-Most of the AI hardware conversation right now is about doing matrix multiplication faster by increasing the size of systolic arrays and working on the memory wall problem using smart dataflows. That's a real and important problem. But it's not the only way to make a machine reason about data, and lately I've been much more interested in a family of models that sidesteps multiply-accumulate almost entirely: **Hyperdimensional Computing (HDC)**, also known as Vector Symbolic Architectures. I learned about targetting architectural efficiency for neural networks.
+Most of the AI hardware conversation right now is about doing matrix multiplication faster: bigger systolic arrays, smarter dataflows to fight the memory wall. That's a real and important problem. But it's not the only way to make a machine reason about data, and lately I've been much more interested in a family of models that sidesteps multiply-accumulate almost entirely: **Hyperdimensional Computing (HDC)**, also known as Vector Symbolic Architectures. I ran into it while reading around architectural efficiency for neural networks, and it's stuck with me since.
 
 ## The core idea
 
@@ -42,6 +42,12 @@ The current architecture:
 
 None of this is exotic as accelerator architecture goes, but building it bottom-up was the point: I wanted to actually feel where a "trivial" bitwise operation stops being trivial once you have to stream two independent vectors out of a shared memory port without stalling the whole pipeline on every load.
 
+## Getting it into Chipyard
+
+RoCC is Rocket's escape hatch for custom instructions: it hands a coprocessor a `RoCCCommand` bundle (`rs1`, `rs2`, the `funct` field, a destination register) decoded straight off `custom0`/`custom1`/`custom2` opcode space, and expects a `RoCCResponse` back on the same interface once the operation's done. Chipyard wraps this in a `LazyRoCC` module and a `BuildRoCC` config fragment, so wiring the accelerator in is mostly a matter of writing `class HDCAccelerator(opcodes: OpcodeSet)(implicit p: Parameters) extends LazyRoCC(opcodes)` and appending it to a `RocketTileAttachParams` list in a custom `Config`. The part that actually took work was everything *behind* that boundary: the accelerator only gets a `HellaCacheIO` port into the core's L1, one memory interface for potentially several in-flight loads, which is exactly why the two `VectorStreamer` units need their own request tags rather than assuming in-order responses.
+
+Verification happens in two layers. Chipyard's Verilator-based `firesim-lib`/`verilator` build target gives fast RTL simulation with the Rocket core actually issuing `HammingOp`-encoded instructions from compiled RISC-V binaries, driven either by hand-written assembly tests or by C code calling into custom instruction wrappers (`.insn` intrinsics, the same mechanism the HLS compiler in HWExplore uses to invoke generated hardware). Standalone unit tests on `VectorStreamer` and `HammingOp` alone run faster and catch the FSM-level bugs — the tagged reorder-buffer logic in particular — before ever touching a full Rocket tile build, which is a slow iteration loop by comparison.
+
 ## Testing it on something real: ECG classification
 
 Toy benchmarks only tell you so much, so I paired the accelerator with an HDC-based ECG arrhythmia classifier trained on the [MIT-BIH dataset](https://github.com/MadebyDaris/HDC_MIT_BIH_dataset), encoding heartbeat features into hypervectors, bundling per-class training examples into class prototypes, and classifying new beats via nearest-prototype Hamming distance, with the distance computation itself offloaded to the RoCC unit.
@@ -57,6 +63,6 @@ A few directions I'm actively chewing on:
 - **Quantifying the actual efficiency claim.** It's not enough to say bitwise ops are "cheaper" — I want cycle counts and, eventually, power figures against a baseline (even a small quantized CNN doing the same ECG classification) to see whether the theoretical argument survives contact with a real memory hierarchy.
 - **On-chip training**, i.e. doing the bundling step for new class prototypes directly on the accelerator instead of only using it for inference.
 
-In parallel, I've been sketching out **NexusV**, a separate, broader exploration of RISC-V accelerator design, less about HDC specifically and more about the general question of how much of an accelerator's control logic and memory interface can be made reusable across very different compute kernels. HyperDim RoCC has been a useful concrete case study for that bigger question: how much of `VectorStreamer` is actually HDC-specific, versus just "a generic streaming engine that happens to be feeding an HDC op right now"?
+In parallel, I've been sketching out **HWExplore**, a separate, broader exploration of RISC-V accelerator design, less about HDC specifically and more about the general question of how much of an accelerator's control logic and memory interface can be made reusable across very different compute kernels. HyperDim RoCC has been a useful concrete case study for that bigger question: how much of `VectorStreamer` is actually HDC-specific, versus just "a generic streaming engine that happens to be feeding an HDC op right now"?
 
 If you work on accelerator architecture, RISC-V, or HDC/VSA and any of this overlaps with what you're doing, I'd genuinely like to talk, as this is exactly the kind of computer-architecture-for-efficient-AI direction I want to go deeper on.

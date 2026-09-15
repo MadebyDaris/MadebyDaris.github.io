@@ -7,6 +7,15 @@ description = "EECS Engineer · Hardware / Software Co-Design · Nanofabrication
 [taxonomies]
 tag = 'tags'
 
+[outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "search-index"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+  home = ["HTML", "RSS", "SearchIndex"]
+
 [menu]
   [[menu.main]]
     name = "Home"
@@ -31,6 +40,12 @@ tag = 'tags'
     pre = "<span data-feather='book'></span>"
     url = "/posts/"
     weight = 4
+
+  [[menu.main]]
+    name = "Renders"
+    pre = "<span data-feather='image'></span>"
+    url = "/renders/"
+    weight = 4.5
 
   [[menu.main]]
     name = "Tags"
@@ -87,30 +102,24 @@ tag = 'tags'
 
   [[params.skills]]
     name = "Hardware/Software Co-Design"
-    icon = "⚙️"
     description = "RISC-V architecture, SystemVerilog RTL, HLS compiler design, CV-X-IF coprocessor interfaces, FPGA workflows"
 
   [[params.skills]]
     name = "Systems Programming"
-    icon = "🔧"
     description = "Julia, C/C++, Rust — compiler toolchains, LLVM IR, low-level memory management, and performance-critical code"
 
   [[params.skills]]
     name = "Nanofabrication"
-    icon = "🔬"
     description = "Cleanroom process experience at Alice & Bob — cat-qubit device fabrication, lithography, wafer inspection tooling"
 
   [[params.skills]]
     name = "HPC & Simulation"
-    icon = "📐"
     description = "Physics simulation engines, quantum mechanics solvers (split-operator, DFG scheduling), numerical methods"
 
   [[params.skills]]
     name = "Math & Physics"
-    icon = "∂"
     description = "Functional analysis, spectral theory, quantum mechanics, computational physics, and applied probability"
 
   [[params.skills]]
     name = "Software Engineering"
-    icon = "💻"
     description = "Full-stack tooling, app development (Flutter, Go), REST APIs, data pipelines, and algorithmic trading systems"

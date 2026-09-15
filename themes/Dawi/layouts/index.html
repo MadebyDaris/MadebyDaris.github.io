@@ -13,17 +13,18 @@
         <div class="hero-text">
             <h1 class="site-title">{{ .Site.Title }}</h1>
             {{ if isset .Site.Params "description" }}
-            <h2 class="site-subtitle">{{ .Site.Params.Description }}</h2>
+            <h2 class="site-subtitle" id="typewriter-target" data-phrases="{{ delimit (split .Site.Params.Description " · ") "|" }}">{{ .Site.Params.Description }}</h2>
             {{ end }}
         </div>
     </div>
 
     <div class="bio-section clean-bio">
         <p>Builder, Researcher, EECS Engineer, Computer Engineering, HPC, Quantum Computing and Nanofabrication.</p>
+        <p class="command-palette-hint">Press <kbd>{{ "⌘" }}</kbd><kbd>K</kbd> (or <kbd>Ctrl</kbd><kbd>K</kbd>) to jump anywhere on the site.</p>
     </div>
 
     <div class="profile-links compact-links">
-        <a href="https://github.com/madebydaris" class="profile-card github-card" target="_blank" rel="noopener">
+        <a href="https://github.com/madebydaris" class="profile-card github-card spotlight" target="_blank" rel="noopener">
             <div class="profile-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path
@@ -32,7 +33,7 @@
             </div>
             <span>GitHub</span>
         </a>
-        <a href="https://www.researchgate.net/profile/Daris-Idirene" class="profile-card researchgate-card"
+        <a href="https://www.researchgate.net/profile/Daris-Idirene" class="profile-card researchgate-card spotlight"
             target="_blank" rel="noopener">
             <div class="profile-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -41,6 +42,15 @@
                 </svg>
             </div>
             <span>ResearchGate</span>
+        </a>
+        <a href="https://open.spotify.com/user/3bvo9mjhsf5552fro64ek5oe4" class="profile-card spotify-card spotlight"
+            target="_blank" rel="noopener">
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                </svg>
+            </div>
+            <span>Spotify</span>
         </a>
     </div>
 
@@ -70,6 +80,23 @@
 </section>
 {{ end }}
 
+<!-- Skills Section -->
+{{ if .Site.Params.skills }}
+<section class="home-feed-section skills-section">
+    <div class="feed-header">
+        <h2 class="feed-title">What I Work With</h2>
+    </div>
+    <div class="skills-grid">
+        {{ range .Site.Params.skills }}
+        <div class="skill-item spotlight">
+            <h3 class="skill-name">{{ .name }}</h3>
+            <p class="skill-desc">{{ .description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
 <!-- Featured Projects Section -->
 {{ $projects := where .Site.Pages "Params.type" "project" }}
 {{ if gt (len $projects) 0 }}
@@ -80,7 +107,7 @@
     </div>
     <div class="blog-feed-list">
         {{ range ($projects.ByDate.Reverse | first 5) }}
-        <article class="feed-item">
+        <article class="feed-item spotlight">
             <div class="feed-item-meta">
                 <time class="feed-date">{{ dateFormat "Jan 2006" .Date }}</time>
                 {{ if .Params.status }}
@@ -96,6 +123,31 @@
 </section>
 {{ end }}
 
+<!-- Latest Renders Section -->
+{{ $renders := where .Site.RegularPages "Section" "renders" }}
+{{ if gt (len $renders) 0 }}
+<section class="home-feed-section">
+    <div class="feed-header">
+        <h2 class="feed-title">Latest Renders</h2>
+        <a href="{{ "renders/" | relURL }}" class="feed-view-all">All Renders →</a>
+    </div>
+    <div class="renders-teaser-grid">
+        {{ range ($renders.ByDate.Reverse | first 4) }}
+        {{ $render := . }}
+        <a href="{{ $render.Permalink }}" class="renders-teaser-item">
+            {{ with $render.Resources.GetMatch "images/thumb.*" }}
+            <img src="{{ .RelPermalink }}" alt="{{ $render.Title }}" loading="lazy">
+            {{ else }}
+            {{ with $render.Params.cover }}
+            <img src="{{ path.Join $render.RelPermalink . | relURL }}" alt="{{ $render.Title }}" loading="lazy">
+            {{ end }}
+            {{ end }}
+        </a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
 <!-- Latest Posts Section -->
 {{ $posts := where .Site.Pages "Params.type" "post" }}
 {{ if gt (len $posts) 0 }}
@@ -106,7 +158,7 @@
     </div>
     <div class="blog-feed-list">
         {{ range ($posts.ByDate.Reverse | first 5) }}
-        <article class="feed-item">
+        <article class="feed-item spotlight">
             <div class="feed-item-meta">
                 <time class="feed-date">{{ dateFormat "Jan 2, 2006" .Date }}</time>
                 {{ if .Params.tags }}
@@ -118,7 +170,7 @@
                 {{ end }}
             </div>
             <h3 class="feed-item-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
-            <p class="feed-item-excerpt">{{ .Summary | truncate 150 }}</p>
+            <p class="feed-item-excerpt">{{ (.Params.description | default .Summary) | plainify | truncate 150 }}</p>
         </article>
         {{ end }}
     </div>

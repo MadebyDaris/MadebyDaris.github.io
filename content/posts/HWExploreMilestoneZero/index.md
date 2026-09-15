@@ -1,7 +1,7 @@
 ---
-title: "Giving NexusV a Memory, A look into Scratchpads, AXI, and the Small Protocols That Hold It Together"
+title: "Giving HWExplore a Memory, A look into Scratchpads, AXI, and the Small Protocols That Hold It Together"
 date: 2026-08-10
-description: "This post is a deep dive into the specific engineering choices I made while designing the NexusV processor, focusing on the memory system that connects the CPU core to its surrounding hardware."
+description: "This post is a deep dive into the specific engineering choices I made while designing the HWExplore processor, focusing on the memory system that connects the CPU core to its surrounding hardware."
 tags: ["RISC-V", "Computer Architecture", "AXI", "Chipyard", "Open Source", "Verification"]
 type: post
 weight: 2
@@ -10,7 +10,7 @@ showTableOfContents: true
 ---
 
 
-For a while, every accelerator in [NexusV](https://github.com/MadebyDaris/NexusV) shared the same
+For a while, every accelerator in [HWExplore](https://github.com/MadebyDaris/HWExplore) shared the same
 contract, following the RISCV Custom Instruction ISA, take `rs1` and `rs2`, two 32-bit numbers, and a few cycles later it hands back `rd`.
 Multiply-accumulate, saturating add, CRC, modular reduction. All of them worked perfectly with this model. 
 
@@ -22,7 +22,7 @@ If you're not from a hardware background, that's fine, this was written by someo
 
 ## The problem: two registers isn't a lot of bandwidth
 
-Every custom instruction NexusV's coprocessor executes comes in through the CPU's decode stage carrying,
+Every custom instruction HWExplore's coprocessor executes comes in through the CPU's decode stage carrying,
 at most, two 32-bit operands and a 3-bit `funct3` field to say which accelerator to route to. That's the
 entire budget for *one instruction*. It's plenty for `c = a + b`. It is nowhere near enough for "here's an
 8-element array, run an NTT over it," because there's no register wide enough to carry an array, or any 
@@ -44,14 +44,14 @@ dense per bit, while registers are expensive and fast. A scratchpad gives you a 
 storage that's *big enough* to hold real working data
 without paying for a full register file at that size.
 
-NexusV's scratchpad, is **dual-port**: two independent address/data interfaces into
+HWExplore's scratchpad, is **dual-port**: two independent address/data interfaces into
 the same underlying memory array, Port A and Port B. If there were only one port, the CPU writing configuration data in and the datapath reading its operands
 out would have to take turns leading to a resource-contention bug in waiting.
 The moment both sides want the memory in the same cycle. Two ports means the CPU can be loading the *next*
 operand into the scratchpad while the datapath is still crunching the *current* one.
 
 ```systemverilog
-module nexus_scratchpad #(
+module hwexplore_scratchpad #(
     parameter int WORDS      = 256,
     parameter int DATA_WIDTH = 32
 ) (
@@ -161,4 +161,4 @@ until they're exercised through the full stack, not just standalone.
 
 
 Read more here !
-**[github.com/MadebyDaris/NexusV](https://github.com/MadebyDaris/NexusV)**.
+**[github.com/MadebyDaris/HWExplore](https://github.com/MadebyDaris/HWExplore)**.

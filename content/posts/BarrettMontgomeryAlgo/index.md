@@ -9,9 +9,9 @@ katex: true
 showTableOfContents: true
 ---
 
-Welcome to  mini dive into modular arithmetic optimizations as a part of my new project NexusV! The theory outlined below forms the mathematical backbone of the hardware IPs, it's pretty simple but useful for computer arithmetics in general and to wrap your head around cryptographic implementations.
+Welcome to  mini dive into modular arithmetic optimizations as a part of my new project HWExplore! The theory outlined below forms the mathematical backbone of the hardware IPs, it's pretty simple but useful for computer arithmetics in general and to wrap your head around cryptographic implementations.
 
-NexusV is an open-source hardware acceleration framework for RISC-V. It allows you to describe a computation and generate a library of hand-optimized IP blocks and compiles it directly into a pipelined, CV-X-IF-compliant coprocessor.
+HWExplore is an open-source hardware acceleration framework for RISC-V. It allows you to describe a computation and generate a library of hand-optimized IP blocks and compiles it directly into a pipelined, CV-X-IF-compliant coprocessor.
 
 This post is a quick reminder of how these algorithms and the proofs behind them can be implemented in hardware as simple IPs, it can be simple for the barrett reduction for instance, but montgomery multiplication is a bit more intricate these algorithms consitute some of the arithmetic algorithms used in post-quantum cryptography.
 
@@ -81,7 +81,7 @@ Hence $t$ is divisible by $R$
 $$t R \equiv T + m(0) \pmod n \implies t R \equiv T \pmod n$$
 Multiplying both sides by the modular inverse $R^{-1}$ yields:
 $$t \equiv T R^{-1} \pmod n$$
-# A look into the NexusV implementation of these algorithms
+# A look into the HWExplore implementation of these algorithms
 Translating these formal mathematical proofs into cycle-accurate digital logic is the crux of Nexus-V.
 ## **The Barrett Reduction Primitive**
 The Barrett IP utilizes a purely combinational datapath to execute the approximation logic. By parameterizing the word width and the precomputed constant $m$, the module efficiently resolves the quotient estimation and conditional remainder correction. This avoids complex division hardware, though careful synthesis is required to ensure the multiplication which get simplified in some cases to simple bit shifts followed by subsequent subtraction as to not bottleneck the critical path of the target frequency. Division is expensive in hardware they can't be easily parallelized like multiplication While adders and multipliers use massive webs of concurrent logic gates to compute results in a single clock tick or a short pipeline.

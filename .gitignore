@@ -1,3 +1,5 @@
+/backup
 /public
 /themes/Dawi/exampleSite
 /themes/Dawi/.github
+.hugo_build.lock
