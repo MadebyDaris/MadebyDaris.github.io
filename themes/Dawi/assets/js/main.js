@@ -124,6 +124,7 @@ function setThemeByUserPref() {
 }
 
 function toggleTheme(event) {
+    event.preventDefault();
     toggleIcon = event.currentTarget.querySelector("a svg.feather");
     if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.dark) {
         setThemeAndStore('light', [event.currentTarget]);
@@ -138,6 +139,9 @@ function setTheme(themeToSet, targets) {
         target.querySelector('a').innerHTML = feather.icons[THEME_TO_ICON_CLASS[themeToSet].split('-')[1]].toSvg();
         target.querySelector(".dark-theme-toggle-screen-reader-target").textContent = [THEME_TO_ICON_TEXT_CLASS[themeToSet]];
     });
+    if (typeof window.setSketchTheme === 'function') {
+        window.setSketchTheme(themeToSet);
+    }
 }
 
 function setThemeAndStore(themeToSet, targets) {

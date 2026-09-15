@@ -43,6 +43,8 @@
     {{ $cssMain := resources.Get "css/main.css" | minify }}
     <link rel="stylesheet" type="text/css" href="{{ $cssMain.RelPermalink }}">
 
+    <link rel="stylesheet" href="{{ "css/prof.css" | absURL }}">
+
     {{ $cssDark := resources.Get "css/dark.css" | minify }}
     <link rel="stylesheet" type="text/css" href="{{ $cssDark.RelPermalink }}" id="dark-theme">
 

@@ -1,6 +1,35 @@
 let stars = [];
 let nodes = [];
 
+const CANVAS_THEME = {
+  dark: {
+    bg: [13, 17, 23],
+    star: [230, 237, 243],
+    node: { r: [170, 130], g: [140, 170], b: [240, 250] },
+    line: { r: [150, 110], g: [115, 150], b: [230, 240] }
+  },
+  light: {
+    bg: [255, 255, 255],
+    star: [90, 100, 115],
+    node: { r: [90, 60], g: [70, 90], b: [170, 190] },
+    line: { r: [110, 80], g: [90, 110], b: [190, 200] }
+  }
+};
+
+function initialCanvasTheme() {
+  try {
+    const saved = localStorage.getItem('theme-preference');
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch (e) {}
+  return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+}
+
+let currentCanvasTheme = initialCanvasTheme();
+
+window.setSketchTheme = function (theme) {
+  currentCanvasTheme = (theme === 'light') ? 'light' : 'dark';
+};
+
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.position(0, 0);
@@ -21,9 +50,9 @@ function setup() {
 }
 
 function draw() {
-  // Deep dark background with motion blur trail effect
-  // Color matches --card-bg: #0d1117 = rgb(13, 17, 23)
-  background(13, 17, 23, 100);
+  // Background with motion blur trail effect, theme-aware
+  const theme = CANVAS_THEME[currentCanvasTheme];
+  background(theme.bg[0], theme.bg[1], theme.bg[2], 100);
 
   // Draw background stars
   for (let star of stars) {
@@ -37,20 +66,21 @@ function draw() {
     for (let j = i + 1; j < nodes.length; j++) {
       let d = dist(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
       let maxDist = 160;
-      
+
       if (d < maxDist) {
         // Opacity inversely proportional to distance
         let alpha = map(d, 0, maxDist, 70, 0);
-        
+
         // Average pulse of the two connected nodes
         let avgPulse = (nodes[i].pulse + nodes[j].pulse) / 2;
-        
-        // Subtle color shift
-        let r = lerp(150, 110, avgPulse);
-        let g = lerp(115, 150, avgPulse);
-        let b = lerp(230, 240, avgPulse);
-        
-        stroke(r, g, b, alpha + avgPulse * 15); 
+
+        // Subtle color shift, theme-aware
+        let line_ = CANVAS_THEME[currentCanvasTheme].line;
+        let r = lerp(line_.r[0], line_.r[1], avgPulse);
+        let g = lerp(line_.g[0], line_.g[1], avgPulse);
+        let b = lerp(line_.b[0], line_.b[1], avgPulse);
+
+        stroke(r, g, b, alpha + avgPulse * 15);
         strokeWeight(1.2 + avgPulse * 0.4);
         line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
       }
@@ -123,17 +153,19 @@ class Node {
 
   show() {
     noStroke();
-    // Subtle localized color shift
-    let r = lerp(170, 130, this.pulse);
-    let g = lerp(140, 170, this.pulse);
-    let b = lerp(240, 250, this.pulse);
-    
-    fill(r, g, b, 140 + this.pulse * 25); 
+    // Subtle localized color shift, theme-aware
+    let node_ = CANVAS_THEME[currentCanvasTheme].node;
+    let r = lerp(node_.r[0], node_.r[1], this.pulse);
+    let g = lerp(node_.g[0], node_.g[1], this.pulse);
+    let b = lerp(node_.b[0], node_.b[1], this.pulse);
+
+    fill(r, g, b, 140 + this.pulse * 25);
     let currentSize = this.size + this.pulse * 1.0;
     ellipse(this.x, this.y, currentSize);
-    
+
     // Subtle glow core
-    fill(255, 255, 255, 200 + this.pulse * 30);
+    let core = currentCanvasTheme === 'light' ? [40, 40, 50] : [255, 255, 255];
+    fill(core[0], core[1], core[2], 200 + this.pulse * 30);
     ellipse(this.x, this.y, currentSize * 0.4);
   }
 }
@@ -164,8 +196,8 @@ class Star {
     // Twinkle effect
     let alpha = this.baseAlpha + sin(frameCount * 0.02 + this.phase) * 30;
     noStroke();
-    // Muted off-white text color
-    fill(230, 237, 243, alpha);
+    let c = CANVAS_THEME[currentCanvasTheme].star;
+    fill(c[0], c[1], c[2], alpha);
     ellipse(this.x, this.y, this.size);
   }
 }

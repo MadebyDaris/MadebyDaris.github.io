@@ -19,6 +19,12 @@
                     <span data-feather="search"></span>
                 </a>
             </div>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">Dark mode</span>
+                <a href="#" aria-label="Toggle dark mode">
+                    <span data-feather="moon"></span>
+                </a>
+            </div>
             {{ range .Site.Menus.main }}
             <div class="nav-link">
                 <a href="{{ .URL | absURL }}" aria-label="{{ .Identifier }}" {{ if .Params.NewPage -}}target="_blank" {{- end -}}>
@@ -36,6 +42,12 @@
 
             <!-- For mobile -->
             <ul class="nav-hamburger-list visibility-hidden">
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">Dark mode</span>
+                    <a href="#" aria-label="Toggle dark mode">
+                        <span data-feather="moon"></span>
+                    </a>
+                </li>
                 {{ range .Site.Menus.main }}
                 <li class="nav-item">
                     <a href="{{ .URL | absURL }}" {{ if .Params.NewPage -}} target="_blank"{{- end -}}>

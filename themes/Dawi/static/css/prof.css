@@ -5,32 +5,32 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Martian+Mono:wght@100..800&display=swap');
 
-/* ---- Design Tokens (Dark Mode) ---- */
+/* ---- Design Tokens (Light Mode defaults — dark.css overrides these when dark mode is active) ---- */
 :root {
     --font-family-mono: 'Martian Mono', 'JetBrains Mono', monospace;
-    --card-bg: #0d1117;
-    --card-bg-hover: #161b22;
-    --border-color: #21262d;
-    --text-color: #e6edf3;
-    --text-color-secondary: #8b949e;
-    --text-color-muted: #484f58;
+    --card-bg: #ffffff;
+    --card-bg-hover: #f6f8fa;
+    --border-color: #d0d7de;
+    --text-color: #1b1f23;
+    --text-color-secondary: #57606a;
+    --text-color-muted: #6e7781;
 
     /* Accent system */
-    --accent-color: hsl(260, 75%, 68%);
-    --accent-light: hsl(260, 75%, 78%);
-    --accent-glow: hsla(260, 75%, 68%, 0.28);
-    --accent-teal: hsl(185, 80%, 52%);
-    --accent-teal-glow: hsla(185, 80%, 52%, 0.2);
+    --accent-color: hsl(260, 65%, 48%);
+    --accent-light: hsl(260, 65%, 58%);
+    --accent-glow: hsla(260, 65%, 48%, 0.16);
+    --accent-teal: hsl(185, 80%, 30%);
+    --accent-teal-glow: hsla(185, 80%, 30%, 0.14);
 
     /* Surfaces */
-    --surface-1: #0d1117;
-    --surface-2: #161b22;
-    --surface-glass: rgba(13, 17, 23, 0.8);
+    --surface-1: #ffffff;
+    --surface-2: #f6f8fa;
+    --surface-glass: rgba(255, 255, 255, 0.85);
 
     /* Shadows */
-    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
     --shadow-accent: 0 0 30px var(--accent-glow);
 
     /* Radius */
